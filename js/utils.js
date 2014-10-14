@@ -17,15 +17,3 @@ function log(params){
     console.log(params)
   }
 }
-<<<<<<< HEAD
-
-function getJSON(file){
-  var request = new XMLHttpRequest();
-  var filepath = 'ressource/json/'+file;
-  request.open("GET", filepath, false);
-  request.send(null);
-  var my_JSON_object = JSON.parse(request.responseText);
-  alert(my_JSON_object.result[0]);
-}
-=======
->>>>>>> bcd920850f6b1b062d0ee134ff64a17cd1422580
