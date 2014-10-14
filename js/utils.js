@@ -1,21 +1,4 @@
-function loadJSON(path, success)
-{
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function()
-    {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                if (success)
-                    success(JSON.parse(xhr.responseText));
-            }
-        }
-    };
-    xhr.open("GET", path, true);
-    xhr.send();
-    return JSON.parse(xhr.responseText);
-}
-
-function loadJSON2(path)
+function loadJSON(path)
 {
     var request = new XMLHttpRequest();
     request.open('GET', path, false);

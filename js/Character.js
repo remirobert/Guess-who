@@ -6,7 +6,7 @@ function Character() {
 }
 
 function initCharacter() {
-    var dataJson = loadJSON2("ressource/data/character.json");
+    var dataJson = loadJSON("ressource/data/character.json");
     var parse = dataJson.characters[Math.floor((Math.random() * 3))];
     
     var selectedCharacter = new Character();
