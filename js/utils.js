@@ -7,3 +7,12 @@ function log(params){
     console.log(params)
   }
 }
+
+function getJSON(file){
+  var request = new XMLHttpRequest();
+  var filepath = 'ressource/json/'+file;
+  request.open("GET", filepath, false);
+  request.send(null);
+  var my_JSON_object = JSON.parse(request.responseText);
+  alert(my_JSON_object.result[0]);
+}
