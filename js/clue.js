@@ -22,6 +22,7 @@ function getRandomListClue(typeSexeCharacter) {
 
 function generateListClue(selectedCharacter) {
     var listClue = [];
+    log("CURRENT CHARACTER EXPLORE : " + selectedCharacter);
     var clues = getRandomListClue(selectedCharacter.sexe);
     var currentClue = new Clue();
 

@@ -11,3 +11,7 @@
 .dead{
   opacity:0.5;
 }
+
+.first {
+    display:inline-block;
+}
