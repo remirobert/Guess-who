@@ -28,14 +28,13 @@ function initCharacter(index) {
     else {
 	selectedCharacter.sexe = "She ";
     }
-    log(selectedCharacter);
+    // log(selectedCharacter);
     return selectedCharacter;
 }
 
 function getCharacters() {
     var characterList = [];
 
-    console.log("GET");
     for (index = 0; index < 3; index++) {
 	characterList[index] = initCharacter(index);
     }

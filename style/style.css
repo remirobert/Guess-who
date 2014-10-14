@@ -7,3 +7,7 @@
   color:red;
   cursor:pointer;
 }
+
+.dead{
+  opacity:0.5;
+}

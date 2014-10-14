@@ -1,3 +1,1 @@
 log('WORKING ! ;-)');
-
-getCharacters();
