@@ -3,15 +3,17 @@ log(['---------------','GAME', '---------------']);
 window.addEventListener('load', (function(){
   
   //Stuff
-  var dom_characters, the_chosen_one;
+  var dom_characters, the_chosen_one, count_alives;
   var characters = getCharacters();
   var container = document.getElementById('character_container');
   var step = 0;
   var canKill = false;
   var canClue = true;
+  var limitReach = false;
   var clue_index = 0;
   var memoryKilled = 0;
   var step_kills = [];
+
 
   init();
 
@@ -36,6 +38,8 @@ window.addEventListener('load', (function(){
       container.appendChild(c);
     }
     dom_characters = document.getElementsByClassName("character");
+
+    count_alives = characters.length;
   }
 
   function createTheChosenOne(){
@@ -73,6 +77,8 @@ window.addEventListener('load', (function(){
 
   function killCharacter(e){
     log('-> Action Character');
+    checkLimit();
+
     if(canKill){
       if(step_kills.indexOf(e.target.id)>=0){
         log('REVIVE '+e.target.id);
@@ -83,13 +89,20 @@ window.addEventListener('load', (function(){
         if(memoryKilled <= 0){
           canClue = false;
         }
+        if(limitReach==true){
+          limitReach = false;
+        }
       }else{
-        log('KILL '+e.target.id);
-        dom_characters[e.target.id].setAttribute('class', 'character dead');
-        step_kills.push(e.target.id);
-        canClue = true;
-        memoryKilled += 1;
-        log(memoryKilled);
+        if(limitReach==true){
+          log('CAN NOT KILL : LIMIT');
+        }else{
+          log('KILL '+e.target.id);
+          dom_characters[e.target.id].setAttribute('class', 'character dead');
+          step_kills.push(e.target.id);
+          canClue = true;
+          memoryKilled += 1;
+          log(memoryKilled);
+        }
       }
     }else{
       log('CAN NOT KILL');
@@ -99,14 +112,54 @@ window.addEventListener('load', (function(){
   function cleanKills(){
     memoryKilled = 0;
     for(var i = 0; i<step_kills.length; i++){
-      characters[step_kills[i]]['isDead'] = true;
+      characters[step_kills[i]]['isDead'] = step;
     }
     for(var i = 0; i<characters.length; i++){
+
       if(characters[i]["isDead"]){
-        log(characters[i]);
-        dom_characters[i].style.display="none";
+        count_alives -= 1 ;
+        log('Alive : '+count_alives);
+        if(count_alives == 1){
+          endGame();
+        }else{
+          log(characters[i]);
+          dom_characters[i].style.display="none";
+        }
       }
     }
+
+    step_kills = [];
+  }
+
+  function endGame(){
+    log('-> endGame');
+    canKill = canClue = false;
+    correctError();
+  }
+
+  function correctError(){
+    log('-> correctError');
+  }
+
+  function checkLimit(){
+    console.log('test');
+    var killed = getKilledCharacters();
+    var merge = killed.concat(step_kills);
+    console.log(merge);
+    if(merge.length == characters.length-1){
+      console.log('ATTENTION NE PEUX PAS SUPPRIMER LE DERNIER');
+      limitReach = true;
+    }
+  }
+
+  function getKilledCharacters(){
+    var tab = [];
+    for(var i = 0; i<characters.length; i++){
+      if(characters[i]['isDead']){
+        tab[i] = characters[i];
+      }
+    }
+    return tab;
   }
 
 }));

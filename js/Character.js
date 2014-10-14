@@ -1,3 +1,5 @@
+var nb_c = loadJSON("ressource/data/character.json").characters.length;
+
 function Character() {
     this.isDead;
     this.sexe;
@@ -12,6 +14,7 @@ function Character() {
 
 function initCharacter(index) {
     var dataJson = loadJSON("ressource/data/character.json");
+
     var parse = dataJson.characters[index];
 
     var selectedCharacter = new Character();
@@ -34,11 +37,14 @@ function initCharacter(index) {
 
 function randomParseArray() {
     var randomArray = [];
-    var arrayIndex = [0, 1, 2];
+    var arrayIndex = [];
+    for(var i=0; i<nb_c; i ++){
+        arrayIndex[i] = i;
+    }
 
-    for (index = 0; index < 3; index++) {
-	var randomIndex = Math.floor((Math.random() * (3 - index)));
-	randomArray[index] = arrayIndex[randomIndex]
+    for (index = 0; index < nb_c; index++) {
+	var randomIndex = Math.floor((Math.random() * (nb_c - index)));
+	randomArray[index] = arrayIndex[randomIndex];
 	arrayIndex.splice(arrayIndex.indexOf(arrayIndex[randomIndex]), 1);
     }
     return randomArray;
@@ -48,7 +54,7 @@ function getCharacters() {
     var characterList = [];
     var arrayIndex = randomParseArray();
 
-    for (index = 0; index < 3; index++) {
+    for (index = 0; index < nb_c; index++) {
 	characterList[index] = initCharacter(arrayIndex[index]);
     }
     return characterList;
