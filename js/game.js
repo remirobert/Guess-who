@@ -65,7 +65,17 @@ window.addEventListener('load', (function(){
 
     function launchClue(){
     	cleanKills();
-    	
+
+    	if (clue_index > 0) {
+	    if (tryCluesCharacters(characters, listClueCharacter[clue_index]) == false) {
+		clue_index += 1;
+	    }
+	}
+
+	if (clue_index > listClueCharacter.length) {
+	    return;
+	}
+
     	log('-> Launch Clue');
     	if(canClue){
     	    playClue(listClueCharacter[clue_index]);

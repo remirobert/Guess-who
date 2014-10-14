@@ -12,6 +12,31 @@ function Character() {
     this.id;
 }
 
+function tryCluesCharacters(listCharacters, currentClue) {
+    var check = true;
+    var splitClue = currentClue.attribut.split(" ");
+    var checkValue = false;
+
+    if (currentClue.prefix == "She  has" || currentClue.prefix == "He  has") {
+	checkValue = true;
+    }
+    for (index = 0; index < listCharacters.length; index++) {
+	if (listCharacters[index].isDead == false) {
+	    var currentValue = listCharacters[index][splitClue[splitClue.length - 1]];
+
+	    if ((currentValue != null && checkValue == false) ||
+	       ((currentValue == null && checkValue != false))) {
+		check = true;
+	    }
+	    console.log("current Value obs : " + currentValue);
+	}
+    }
+    if (check == false) {
+	console.log(" ================CANNOT MAKE THE CLUE================ ");
+    }
+    return (check);
+}
+
 function initCharacter(index) {
     var dataJson = loadJSON("ressource/data/character.json");
 
