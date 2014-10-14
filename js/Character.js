@@ -9,9 +9,9 @@ function Character() {
     this.mustache;
 }
 
-function initCharacter() {
+function initCharacter(index) {
     var dataJson = loadJSON("ressource/data/character.json");
-    var parse = dataJson.characters[Math.floor((Math.random() * 3))];
+    var parse = dataJson.characters[index];
 
     var selectedCharacter = new Character();
     selectedCharacter.isDead = false;
@@ -30,4 +30,14 @@ function initCharacter() {
     }
     log(selectedCharacter);
     return selectedCharacter;
+}
+
+function getCharacters() {
+    var characterList = [];
+
+    console.log("GET");
+    for (index = 0; index < 3; index++) {
+	characterList[index] = initCharacter(index);
+    }
+    return characterList;
 }

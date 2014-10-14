@@ -1,3 +1,3 @@
 log('WORKING ! ;-)');
 
-generateListClue(initCharacter());
+getCharacters();
