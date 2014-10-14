@@ -20,8 +20,18 @@ function getRandomListClue() {
 function generateListClue(selectedCharacter) {
     var listClue = [];
 
-    getRandomListClue();
-    for (index = 0; index < 5; index++) {
+    var clue = getRandomListClue();
+
+    var currentClue = new Clue();
+    currentClue.prefix = "";
+    if (selectedCharacter.sexe == "She ") {
+	currentClue.attribut = "I am a girl.";
+    }
+    else {
+	currentClue.attribut = "I am a boy.";
+    }
+    listClue[0] = currentClue;
+    for (index = 1; index < 7; index++) {
 	var currentClue = new Clue();
 	currentClue.attribut = clues[Math.floor(Math.random() * 3)];
 	var attributValue = selectedCharacter[currentClue.attribut];

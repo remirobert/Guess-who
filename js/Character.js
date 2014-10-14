@@ -29,7 +29,6 @@ function initCharacter(index) {
     else {
 	selectedCharacter.sexe = "She ";
     }
-    log(selectedCharacter);
     return selectedCharacter;
 }
 

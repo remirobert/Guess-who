@@ -1,3 +1,6 @@
 log('WORKING ! ;-)');
 
-getCharacters();
+var l = getCharacters();
+log(l);
+
+generateListClue(l[0]);
