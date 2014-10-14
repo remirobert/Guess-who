@@ -1,4 +1,4 @@
-console.log('WORKING ! ;-)');
+log('WORKING ! ;-)');
 
-var c = initCharacter();
-console.log('character : ' + c.hair);
+// var c = initCharacter();
+// log('character : ' + c.hair);
