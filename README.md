@@ -1,5 +1,9 @@
-Guess-who-
 ==========
+
+<p align="center">
+  <h1 align="center">Guess who ?</h1>
+  <img src="https://raw.githubusercontent.com/remirobert/Guess-who-/master/imagesPres/capture1.png" align="center"/>
+</p>
 
 -------------
 Arborescence
