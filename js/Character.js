@@ -7,6 +7,7 @@ function Character() {
     this.mask;
     this.beard;
     this.mustache;
+    this.id;
 }
 
 function initCharacter(index) {
@@ -32,12 +33,24 @@ function initCharacter(index) {
     return selectedCharacter;
 }
 
+function randomParseArray() {
+    var randomArray = [];
+    var arrayIndex = [0, 1, 2];
+
+    for (index = 0; index < 3; index++) {
+	var randomIndex = Math.floor((Math.random() * (3 - index)));
+	randomArray[index] = arrayIndex[randomIndex]
+	arrayIndex.splice(arrayIndex.indexOf(arrayIndex[randomIndex]), 1);
+    }
+    return randomArray;
+}
+
 function getCharacters() {
     var characterList = [];
+    var arrayIndex = randomParseArray();
 
-    console.log("GET");
     for (index = 0; index < 3; index++) {
-	characterList[index] = initCharacter(index);
+	characterList[index] = initCharacter(arrayIndex[index]);
     }
     return characterList;
 }
