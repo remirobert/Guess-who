@@ -1,5 +1,3 @@
-var clues = ["hair", "hat", "eye"];
-
 function Clue() {
     this.prefix;
     this.attribut;
@@ -9,9 +7,9 @@ function getRandomListClue() {
     var randomList = ["sexe"];
     var clueList = ["hair", "eye", "hat", "mask", "beard", "mustache"];
 
-    for (index = 0; index < 5; index++) {
-	var randomIndex = Math.floor((Math.random() * (6 - index)));
-	randomList[index + 1] = clueList[randomIndex];
+    for (index = 1; index < 7; index++) {
+	var randomIndex = Math.floor((Math.random() * (7 - index)));
+	randomList[index] = clueList[randomIndex];
 	cluelist = clueList.splice(clueList.indexOf(clueList[randomIndex]), 1);
     }
     return randomList;
@@ -20,8 +18,9 @@ function getRandomListClue() {
 function generateListClue(selectedCharacter) {
     var listClue = [];
 
-    var clue = getRandomListClue();
-
+    var clues = getRandomListClue();
+    log(clues);
+    
     var currentClue = new Clue();
     currentClue.prefix = "";
     if (selectedCharacter.sexe == "She ") {
@@ -33,7 +32,7 @@ function generateListClue(selectedCharacter) {
     listClue[0] = currentClue;
     for (index = 1; index < 7; index++) {
 	var currentClue = new Clue();
-	currentClue.attribut = clues[Math.floor(Math.random() * 3)];
+	currentClue.attribut = clues[index];
 	var attributValue = selectedCharacter[currentClue.attribut];
 	
 	var prefix = selectedCharacter.sexe;
