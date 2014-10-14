@@ -4,144 +4,144 @@
 	    "id":0,
 	    "sexe": 0,
 	    "attribut": [{
-		"hair": null,
-		"hat": null,
-		"eye": "blue",
-		"mask": "green",
-		"beard": null,
-		"mustache": null
+			"hair": null,
+			"hat": null,
+			"eye": "blue",
+			"mask": "green",
+			"beard": null,
+			"mustache": null
 	    }]
 	},
 	{
 	    "id":1,
 	    "sexe": 1,
 	    "attribut": [{
-		"hair": "black",
-		"hat": "",
-		"eye": "brown",
-		"mask": null,
-		"beard": null,
-		"mustache": null
+			"hair": "black",
+			"hat": "",
+			"eye": "brown",
+			"mask": null,
+			"beard": null,
+			"mustache": null
 	    }]
 	},
 	{
 	    "id":2,
 	    "sexe": 1,
 	    "attribut": [{
-		"hair": "brown",
-		"hat": "",
-		"eye": "green",
-		"mask": null,
-		"beard": null,
-		"mustache": null
+			"hair": "brown",
+			"hat": "",
+			"eye": "green",
+			"mask": null,
+			"beard": null,
+			"mustache": null
 	    }]
 	},
 	{
 	    "id":3,
 	    "sexe": 1,
 	    "attribut": [{
-		"hair": "blond",
-		"hat": "",
-		"eye": "green",
-		"mask": null,
-		"beard": null,
-		"mustache": null
+			"hair": "blond",
+			"hat": "",
+			"eye": "green",
+			"mask": null,
+			"beard": null,
+			"mustache": null
 	    }]
 	},
 	{
 	    "id":4,
 	    "sexe": 1,
 	    "attribut": [{
-		"hair": "red",
-		"hat": "",
-		"eye": "blue",
-		"mask": "blue",
-		"beard": null,
-		"mustache": null
+			"hair": "red",
+			"hat": "",
+			"eye": "blue",
+			"mask": "blue",
+			"beard": null,
+			"mustache": null
 	    }]
 	},
 	{
 	    "id":5,
 	    "sexe": 0,
 	    "attribut": [{
-		"hair": "blond",
-		"hat": null,
-		"eye": "blue",
-		"mask": null,
-		"beard": null,
-		"mustache": "blond"
+			"hair": "blond",
+			"hat": null,
+			"eye": "blue",
+			"mask": null,
+			"beard": null,
+			"mustache": "blond"
 	    }]
 	},
 	{
 	    "id":6,
 	    "sexe": 0,
 	    "attribut": [{
-		"hair": null,
-		"hat": null,
-		"eye": "green",
-		"mask": "red",
-		"beard": "brown",
-		"mustache": "brown"
+			"hair": null,
+			"hat": null,
+			"eye": "green",
+			"mask": "red",
+			"beard": "",
+			"mustache": "brown"
 	    }]
 	},
 	{
 	    "id":7,
 	    "sexe": 1,
 	    "attribut": [{
-		"hair": null,
-		"hat": null,
-		"eye": "blue",
-		"mask": "black",
-		"beard": null,
-		"mustache": null
+			"hair": null,
+			"hat": null,
+			"eye": "blue",
+			"mask": "black",
+			"beard": null,
+			"mustache": null
 	    }]
 	},
 	{
 	    "id":8,
 	    "sexe": 1,
 	    "attribut": [{
-		"hair": "black",
-		"hat": "black",
-		"eye": "green",
-		"mask": null,
-		"beard": null,
-		"mustache": null
+			"hair": "black",
+			"hat": "black",
+			"eye": "green",
+			"mask": null,
+			"beard": null,
+			"mustache": null
 	    }]
 	},
 	{
 	    "id":9,
 	    "sexe": 0,
 	    "attribut": [{
-		"hair": "brown",
-		"hat": null,
-		"eye": "brown",
-		"mask": "green",
-		"beard": null,
-		"mustache": null
+			"hair": "brown",
+			"hat": null,
+			"eye": "brown",
+			"mask": "green",
+			"beard": null,
+			"mustache": null
 	    }]
 	},
 	{
 	    "id":10,
 	    "sexe": 0,
 	    "attribut": [{
-		"hair": null,
-		"hat": "black",
-		"eye": "blue",
-		"mask": null,
-		"beard": null,
-		"mustache": "brown"
+			"hair": null,
+			"hat": "black",
+			"eye": "blue",
+			"mask": null,
+			"beard": null,
+			"mustache": "brown"
 	    }]
 	},
 	{
 	    "id":11,
 	    "sexe": 0,
 	    "attribut": [{
-		"hair": null,
-		"hat": null,
-		"eye": "brown",
-		"mask": "blue",
-		"beard": "brown",
-		"mustache": null
+			"hair": null,
+			"hat": null,
+			"eye": "brown",
+			"mask": "blue",
+			"beard": "",
+			"mustache": null
 	    }]
 	}
     ]

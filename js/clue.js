@@ -27,10 +27,10 @@ function generateListClue(selectedCharacter) {
 
     currentClue.prefix = "";
     if (selectedCharacter.sexe == "She ") {
-	currentClue.attribut = "I am a girl.";
+	currentClue.attribut = "She's a girl.";
     }
     else {
-	currentClue.attribut = "I am a boy.";
+	currentClue.attribut = "He's a boy.";
     }
     listClue[0] = currentClue;
     for (index = 1; index < clues.length; index++) {

@@ -3,7 +3,7 @@ log(['---------------','GAME', '---------------']);
 window.addEventListener('load', (function(){
   
   //Stuff
-  var dom_characters, the_chosen_one, count_alives;
+  var dom_characters, the_chosen_one, count_alives, clue;
   var characters = getCharacters();
   var container = document.getElementById('character_container');
   var step = 0;
@@ -13,7 +13,6 @@ window.addEventListener('load', (function(){
   var clue_index = 0;
   var memoryKilled = 0;
   var step_kills = [];
-
 
   init();
 
@@ -61,8 +60,9 @@ window.addEventListener('load', (function(){
     log('-> Launch Clue');
     if(canClue){
       log(the_chosen_one);
-      var clue = generateListClue(the_chosen_one);
-
+      clue = generateListClue(the_chosen_one);
+      console.log(clue);
+      
       log('CLUE : ' + clue[clue_index].prefix + ' ' + clue[clue_index].attribut);
       
       clue_index += 1;
@@ -111,20 +111,27 @@ window.addEventListener('load', (function(){
 
   function cleanKills(){
     memoryKilled = 0;
+
     for(var i = 0; i<step_kills.length; i++){
       characters[step_kills[i]]['isDead'] = step;
     }
-    for(var i = 0; i<characters.length; i++){
 
+    var deads_char = document.getElementsByClassName('dead');
+    var nb_lefts = characters.length - deads_char.length;
+    count_alives = nb_lefts;
+    log('Alive : '+count_alives);
+
+    if(count_alives == 1){
+      endGame();
+    }
+
+    for(var i = 0; i<characters.length; i++){
       if(characters[i]["isDead"]){
-        count_alives -= 1 ;
-        log('Alive : '+count_alives);
-        if(count_alives == 1){
-          endGame();
-        }else{
           log(characters[i]);
           dom_characters[i].style.display="none";
-        }
+          // var c = characters[i];
+          // var r = clue;
+          // correctError(c, r);     
       }
     }
 
@@ -134,19 +141,64 @@ window.addEventListener('load', (function(){
   function endGame(){
     log('-> endGame');
     canKill = canClue = false;
-    correctError();
+    // correctError();
   }
 
-  function correctError(){
-    log('-> correctError');
+  function correctError(character, r){
+    // log('-> correctError');
+    // console.log(r[clue_index].prefix);
+    // console.log(r[clue_index].attribut);
+
+    // var p = r[clue_index].prefix;
+    // var a = r[clue_index].attribut;
+
+    // if(p == 'She has' || p == 'He has'){
+    //   if(
+    //     (a == 'brown mustache' && character.mustache == "brown") ||
+    //     (a == 'blond mustache' && character.mustache == "blond") ||
+    //     (a == 'beard' && character.beard == "") ||
+    //     (a == 'blond hair' && character.hair == "blond") ||
+    //     (a == 'black hair' && character.hair == "black") ||
+    //     (a == 'brown hair' && character.hair == "brown") ||
+    //     (a == 'red hair' && character.hair == "red") ||
+    //     (a == 'green eye' && character.eye == "green") ||
+    //     (a == 'brown eye' && character.eye == "green") ||
+    //     (a == 'blue eye' && character.eye == "green") ||
+    //     (a == 'hat' && character.hat == "") ||
+    //     (a == 'green mask' && character.mask == "green") ||
+    //     (a == 'blue mask' && character.mask == "blue") ||
+    //     (a == 'red mask' && character.mask == "red") ||
+    //     (a == 'black mask' && character.mask == "black")
+    //     ){
+    //     console.log('JUSTE');
+    //   }else{
+    //     console.log('FAUX');
+    //   }
+    // }else{
+    //   if(
+    //     (a == 'mustache' && character.mustache == null) ||
+    //     (a == 'beard' && character.beard == null) ||
+    //     (a == 'hair' && character.hair == null) ||
+    //     (a == 'hat' && character.hat == null) ||
+    //     (a == 'mask' && character.mask == null)
+    //     ){
+    //     console.log('JUSTE');
+    //   }else{
+    //     console.log('FAUX');
+    //   }
+    // }
+
+    // if(clue_index == 0){
+
+    // }
+
   }
 
   function checkLimit(){
-    console.log('test');
-    var killed = getKilledCharacters();
-    var merge = killed.concat(step_kills);
-    console.log(merge);
-    if(merge.length == characters.length-1){
+    var last_char = document.getElementsByClassName('dead');
+    console.log('DEBUG :');
+    console.log(last_char.length);
+    if(last_char.length == characters.length-1){
       console.log('ATTENTION NE PEUX PAS SUPPRIMER LE DERNIER');
       limitReach = true;
     }
@@ -161,5 +213,6 @@ window.addEventListener('load', (function(){
     }
     return tab;
   }
+
 
 }));
