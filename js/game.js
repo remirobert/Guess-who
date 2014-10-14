@@ -3,19 +3,18 @@ log(['---------------','GAME', '---------------']);
 window.addEventListener('load', (function(){
   
   //Stuff
-  var dom_characters, the_chosen_one, count_alives;
-  var characters = getCharacters();
-  var container = document.getElementById('character_container');
-  var step = 0;
-  var canKill = false;
-  var canClue = true;
-  var limitReach = false;
-  var clue_index = 0;
-  var memoryKilled = 0;
-  var step_kills = [];
-
-
-  init();
+    var dom_characters, the_chosen_one, count_alives;
+    var characters = getCharacters();
+    var container = document.getElementById('character_container');
+    var step = 0;
+    var canKill = false;
+    var canClue = true;
+    var limitReach = false;
+    var clue_index = 0;
+    var memoryKilled = 0;
+    var step_kills = [];
+    init();
+    var listClueCharacter = generateListClue(the_chosen_one);
 
   function init(){
     log('-> Init');
@@ -63,10 +62,10 @@ window.addEventListener('load', (function(){
     
     log('-> Launch Clue');
     if(canClue){
-      log(the_chosen_one);
-      var clue = generateListClue(the_chosen_one);
+	playClue(listClueCharacter[clue_index]);
+	log(the_chosen_one);
 	
-      log('CLUE : ' + clue[clue_index].prefix + ' ' + clue[clue_index].attribut);
+      log('CLUE : ' + listClueCharacter[clue_index].prefix + ' ' + listClueCharacter[clue_index].attribut);
       
       clue_index += 1;
       step += 1;

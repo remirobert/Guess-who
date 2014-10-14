@@ -13,6 +13,11 @@ var clue = {
                             Sound Controller
 ----------------------------------------------------------------------------- */
 
+function playClue(currentClue) {
+    var msgPrefix = new SpeechSynthesisUtterance(currentClue.prefix + currentClue.attribut);
+    window.speechSynthesis.speak(msgPrefix);
+}
+
 function launchSounds(clue){
   var player = {
     controller : document.getElementById("sound_controller"),
