@@ -28,19 +28,22 @@ window.addEventListener('load', (function(){
     }
   }
 
-  function createCharacters(){
-    log('-> Creation of the Characters');
-    for (var i = 0 ; i < characters.length ; i++){
-      var c = document.createElement('div');
-      c.setAttribute("id", i);
-      c.setAttribute("class", "character");
-      c.textContent = "Character "+i;
-      container.appendChild(c);
+    function createCharacters(){
+	log('-> Creation of the Characters');
+	for (var i = 0 ; i < characters.length ; i++){
+	    var c = document.createElement('div');
+	    c.setAttribute("id", i);
+	    c.setAttribute("class", "character");
+	    c.textContent = "Character "+i;
+	    var img = document.createElement('img');
+	    img.src = 'ressource/img/' + (characters[i].id + 1) + '.png';
+	    console.log(characters[i]);
+	    c.appendChild(img);
+	    container.appendChild(c);
+	}
+	dom_characters = document.getElementsByClassName("character");
+	count_alives = characters.length;
     }
-    dom_characters = document.getElementsByClassName("character");
-
-    count_alives = characters.length;
-  }
 
   function createTheChosenOne(){
     log('-> Choose The Chosen One');
@@ -62,7 +65,7 @@ window.addEventListener('load', (function(){
     if(canClue){
       log(the_chosen_one);
       var clue = generateListClue(the_chosen_one);
-
+	
       log('CLUE : ' + clue[clue_index].prefix + ' ' + clue[clue_index].attribut);
       
       clue_index += 1;
