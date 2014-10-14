@@ -42,6 +42,7 @@ window.addEventListener('load', (function(){
     log('-> Choose The Chosen One');
     var roll = Math.floor((Math.random() * characters.length) + 1);
     log(['The Chosen One is character ' + roll, characters[roll-1]]);
+    return characters[roll-1];
   }
 
   function launchStep(){
@@ -55,14 +56,8 @@ window.addEventListener('load', (function(){
     
     log('-> Launch Clue');
     if(canClue){
-      var clue = 
-      [
-        {attribut: "a boy", prefix: "he is"},
-        {attribut: "hat", prefix: "he has"},
-        {attribut: "hair", prefix: "he hasn't"},
-        {attribut: "hat", prefix: "he has"},
-        {attribut: "eye", prefix: "he has"}
-      ];
+      log(the_chosen_one);
+      var clue = generateListClue(the_chosen_one);
 
       log('CLUE : ' + clue[clue_index].prefix + ' ' + clue[clue_index].attribut);
       
