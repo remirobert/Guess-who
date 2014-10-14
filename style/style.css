@@ -2,3 +2,12 @@
   color:blue;
   cursor:pointer;
 }
+
+#clue{
+  color:red;
+  cursor:pointer;
+}
+
+.dead{
+  opacity:0.5;
+}
