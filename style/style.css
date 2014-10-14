@@ -15,3 +15,23 @@
 .first {
     display:inline-block;
 }
+
+#wrapper{
+  width:768px;
+  height:1024px;
+  border:1px solid red;
+  border-box:;
+}
+
+#character_container{
+  width:648px;
+  margin:auto;
+}
+
+#hands{
+  width: 600px;
+  margin: auto;
+  position: absolute;
+  top: 0px;
+  left: 66px;
+}

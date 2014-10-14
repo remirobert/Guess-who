@@ -6,6 +6,7 @@ window.addEventListener('load', (function(){
     var dom_characters, the_chosen_one, count_alives;
     var characters = getCharacters();
     var container = document.getElementById('character_container');
+    var hand_container = document.getElementById('hands');
     var step = 0;
     var canKill = false;
     var canClue = true;
@@ -19,31 +20,34 @@ window.addEventListener('load', (function(){
     launchClue();
 
     function init(){
-	log('-> Init');
-	createCharacters();
-	the_chosen_one = createTheChosenOne();
-	launchStep();
+    	log('-> Init');
+    	createCharacters();
+    	the_chosen_one = createTheChosenOne();
+    	launchStep();
 
-	for(var i = 0 ; i < dom_characters.length; i++){
-	    dom_characters[i].addEventListener("click", killCharacter);
-	}
+    	for(var i = 0 ; i < dom_characters.length; i++){
+    	    dom_characters[i].addEventListener("click", killCharacter);
+    	}
     }
 
     function createCharacters(){
-	log('-> Creation of the Characters');
-	for (var i = 0 ; i < characters.length ; i++){
-	    var c = document.createElement('div');
-	    c.setAttribute("id", i);
-	    c.setAttribute("class", "character");
-	    c.textContent = "Character "+i;
-	    var img = document.createElement('img');
-	    img.src = 'ressource/img/' + (characters[i].id + 1) + '.png';
-	    console.log(characters[i]);
-	    c.appendChild(img);
-	    container.appendChild(c);
-	}
-	dom_characters = document.getElementsByClassName("character");
-	count_alives = characters.length;
+    	log('-> Creation of the Characters');
+    	for (var i = 0 ; i < characters.length ; i++){
+    	    var c = document.createElement('img');
+    	    c.setAttribute("id", i);
+    	    c.setAttribute("class", "character");
+          c.src = 'ressource/img/characters/' + (characters[i].id + 1) + '.png';
+    	    container.appendChild(c);
+
+          var h = document.createElement('img');
+          h.setAttribute("id", i);
+          h.setAttribute("class", "hands");
+          h.src = 'ressource/img/characters/' + (characters[i].id + 1) + '-main' + '.png';
+          hand_container.appendChild(h);
+
+    	}
+    	dom_characters = document.getElementsByClassName("character");
+    	count_alives = characters.length;
     }
 
   function createTheChosenOne(){
@@ -60,57 +64,63 @@ window.addEventListener('load', (function(){
   }
 
     function launchClue(){
-	cleanKills();
-	
-	log('-> Launch Clue');
-	if(canClue){
-	    playClue(listClueCharacter[clue_index]);
-	    log(the_chosen_one);
-	    
-	    log('CLUE : ' + listClueCharacter[clue_index].prefix + ' ' + listClueCharacter[clue_index].attribut);
-	    
-	    clue_index += 1;
-	    step += 1;
-	    log('Etape : ' + step);
-	    canKill = true;
-	    canClue = false;
-	}else{
-	    log("CAN'T CLUE FOR NOW");
-	}
+    	cleanKills();
+    	
+    	log('-> Launch Clue');
+    	if(canClue){
+    	    playClue(listClueCharacter[clue_index]);
+    	    log(the_chosen_one);
+    	    
+    	    log('CLUE : ' + listClueCharacter[clue_index].prefix + ' ' + listClueCharacter[clue_index].attribut);
+    	    
+    	    clue_index += 1;
+    	    step += 1;
+    	    log('Etape : ' + step);
+    	    canKill = true;
+    	    canClue = false;
+
+          printClue(listClueCharacter[clue_index].attribut);
+    	}else{
+    	    log("CAN'T CLUE FOR NOW");
+    	}
+    }
+
+    function printClue(clue){
+
     }
 
     function killCharacter(e){
-	log('-> Action Character');
-	checkLimit();
+    	log('-> Action Character');
+    	checkLimit();
 
-	if(canKill){
-	    if(step_kills.indexOf(e.target.id)>=0){
-		log('REVIVE '+e.target.id);
-		dom_characters[e.target.id].setAttribute('class', 'character');
-		step_kills.splice(step_kills.indexOf(e.target.id),1);
-		memoryKilled -= 1;
-		log(memoryKilled);
-		if(memoryKilled <= 0){
-		    canClue = false;
-		}
-		if(limitReach==true){
-		    limitReach = false;
-		}
-	    }else{
-		if(limitReach==true){
-		    log('CAN NOT KILL : LIMIT');
-		}else{
-		    log('KILL '+e.target.id);
-		    dom_characters[e.target.id].setAttribute('class', 'character dead');
-		    step_kills.push(e.target.id);
-		    canClue = true;
-		    memoryKilled += 1;
-		    log(memoryKilled);
-		}
-	    }
-	}else{
-	    log('CAN NOT KILL');
-	}
+    	if(canKill){
+    	    if(step_kills.indexOf(e.target.id)>=0){
+    		log('REVIVE '+e.target.id);
+    		dom_characters[e.target.id].setAttribute('class', 'character');
+    		step_kills.splice(step_kills.indexOf(e.target.id),1);
+    		memoryKilled -= 1;
+    		log(memoryKilled);
+    		if(memoryKilled <= 0){
+    		    canClue = false;
+    		}
+    		if(limitReach==true){
+    		    limitReach = false;
+    		}
+    	    }else{
+    		if(limitReach==true){
+    		    log('CAN NOT KILL : LIMIT');
+    		}else{
+    		    log('KILL '+e.target.id);
+    		    dom_characters[e.target.id].setAttribute('class', 'character dead');
+    		    step_kills.push(e.target.id);
+    		    canClue = true;
+    		    memoryKilled += 1;
+    		    log(memoryKilled);
+    		}
+    	    }
+    	}else{
+    	    log('CAN NOT KILL');
+    	}
     }
 
   function cleanKills(){
@@ -217,7 +227,6 @@ window.addEventListener('load', (function(){
     	}
     	return tab;
     }
-
 
 }));
 
