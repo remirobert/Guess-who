@@ -1,6 +1,10 @@
 Guess-who-
 ==========
 
+<p align="center">
+  <img src ="https://raw.githubusercontent.com/remirobert/Guess-who-/master/imagesPres/capture1.png"/>
+</p>
+
 -------------
 Arborescence
 -------------
