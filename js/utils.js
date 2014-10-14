@@ -17,3 +17,4 @@ function log(params){
     console.log(params)
   }
 }
+
