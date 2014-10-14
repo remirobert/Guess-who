@@ -22,10 +22,9 @@ function getRandomListClue(typeSexeCharacter) {
 
 function generateListClue(selectedCharacter) {
     var listClue = [];
-
     var clues = getRandomListClue(selectedCharacter.sexe);
-    
     var currentClue = new Clue();
+
     currentClue.prefix = "";
     if (selectedCharacter.sexe == "She ") {
 	currentClue.attribut = "I am a girl.";
@@ -54,6 +53,5 @@ function generateListClue(selectedCharacter) {
 	currentClue.attribut = currentAttribut;
 	listClue[index] = currentClue;
     }
-    log(listClue);
     return listClue;
 }
