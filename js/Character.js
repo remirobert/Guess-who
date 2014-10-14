@@ -5,11 +5,26 @@ function Character() {
     this.eye;
 }
 
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+	if(rawFile.readyState === 4)
+	{
+	    if(rawFile.status === 200 || rawFile.status == 0)
+	    {
+		var allText = rawFile.responseText;
+		alert(allText);
+	    }
+	}
+    }
+    rawFile.send(null);
+}
+
 function initCharacter() {
-    var text = '{ "characters" : [' +
-	'{ "hair": false, "hat": false,  "eye": false },' +
-	'{ "hair": false, "hat": false,  "eye": true },' +
-	'{ "hair": true, "hat": true,  "eye": false } ]}';
+    readTextFile("ressources/character.json");
 
     var randCharacter = Math.floor((Math.random() * 3));
     console.log(randCharacter);

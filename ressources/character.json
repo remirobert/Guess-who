@@ -1,2 +1,19 @@
-{"result":true,"count":1}
-
+{
+    "characters": [
+	{
+	    "hair": true,
+	    "hat": false,
+	    "eye": true
+	},
+	{
+	    "hair": false,
+	    "hat": false,
+	    "eye": true
+	},
+	{
+	    "hair": false,
+	    "hat": true,
+	    "eye": false
+	}
+    ]
+}
