@@ -1,4 +1,3 @@
-
 function Character() {
     this.hair;
     this.hat;
