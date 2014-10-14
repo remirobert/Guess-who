@@ -4,10 +4,10 @@ var clue = {
 }
 
 // TEST SOUND CONTROLLER
-// log(['---------------','SOUND CONTROLLER', '---------------']);
-// window.addEventListener('load', (function(){
-//   launchSounds(clue);
-// }), false);
+//log(['---------------','SOUND CONTROLLER', '---------------']);
+//window.addEventListener('load', (function(){
+//  launchSounds(clue);
+//}), false);
 
 /* -----------------------------------------------------------------------------
                             Sound Controller

@@ -1,3 +1,22 @@
+function loadJSON(path, success, error)
+{
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                if (success)
+                    success(JSON.parse(xhr.responseText));
+            } else {
+                if (error)
+                    error(xhr);
+            }
+        }
+    };
+    xhr.open("GET", path, true);
+    xhr.send();
+}
+
 function log(params){
   if(params instanceof Array){
     for (var i=0;i<params.length;i++){
@@ -7,6 +26,7 @@ function log(params){
     console.log(params)
   }
 }
+<<<<<<< HEAD
 
 function getJSON(file){
   var request = new XMLHttpRequest();
@@ -16,3 +36,5 @@ function getJSON(file){
   var my_JSON_object = JSON.parse(request.responseText);
   alert(my_JSON_object.result[0]);
 }
+=======
+>>>>>>> bcd920850f6b1b062d0ee134ff64a17cd1422580
