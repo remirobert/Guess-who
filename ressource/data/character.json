@@ -1,19 +1,37 @@
 {
     "characters": [
 	{
-	    "hair": true,
-	    "hat": false,
-	    "eye": true
+	    "sexe": 0,
+	    "attribut": [{
+		"hair": "red",
+		"hat": null,
+		"eye": "green",
+		"mask": "gree",
+		"beard": null,
+		"mustache": "dark"
+	    }]
 	},
 	{
-	    "hair": false,
-	    "hat": false,
-	    "eye": true
+	    "sexe": 1,
+	    "attribut": [{
+		"hair": null,
+		"hat": "",
+		"eye": "blue",
+		"mask": null,
+		"beard": "",
+		"mustache": null
+	    }]
 	},
 	{
-	    "hair": false,
-	    "hat": true,
-	    "eye": false
+	    "sexe": 0,
+	    "attribut": [{
+		"hair": null,
+		"hat": "",
+		"eye": "brown",
+		"mask": null,
+		"beard": null,
+		"mustache": "blond"
+	    }]
 	}
     ]
 }
