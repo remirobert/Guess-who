@@ -5,20 +5,39 @@ function Clue() {
     this.attribut;
 }
 
+function getRandomListClue() {
+    var randomList = ["sexe"];
+    var clueList = ["hair", "eye", "hat", "mask", "beard", "mustache"];
+
+    for (index = 0; index < 5; index++) {
+	var randomIndex = Math.floor((Math.random() * (6 - index)));
+	randomList[index + 1] = clueList[randomIndex];
+	cluelist = clueList.splice(clueList.indexOf(clueList[randomIndex]), 1);
+    }
+    return randomList;
+}
+
 function generateListClue(selectedCharacter) {
     var listClue = [];
 
+    getRandomListClue();
     for (index = 0; index < 5; index++) {
 	var currentClue = new Clue();
 	currentClue.attribut = clues[Math.floor(Math.random() * 3)];
 	var attributValue = selectedCharacter[currentClue.attribut];
-
-	if (attributValue == true) {
-	    currentClue.prefix = "he has";
+	
+	var prefix = selectedCharacter.sexe;
+	var currentAttribut = null
+	if (attributValue != null) {
+	    prefix += " has";
+	    currentAttribut = attributValue + " " + currentClue.attribut;
 	}
 	else {
-	    currentClue.prefix = "he hasn't";
+	    prefix += " hasn't";
+	    currentAttribut = currentClue.attribut;
 	}
+	currentClue.prefix = prefix;
+	currentClue.attribut = currentAttribut;
 	listClue[index] = currentClue;
     }
     log(listClue);
