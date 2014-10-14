@@ -4,7 +4,7 @@ window.addEventListener('load', (function(){
   
   //Stuff
   var dom_characters, the_chosen_one;;
-  var characters = loadJSON2('ressource/data/character.json').characters;
+  var characters = loadJSON('ressource/data/character.json').characters;
   var container = document.getElementById('character_container');
   var step = 0;
   var cankill = false;
