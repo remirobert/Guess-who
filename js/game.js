@@ -7,7 +7,7 @@ window.addEventListener('load', (function(){
   var characters = loadJSON('ressource/data/character.json').characters;
   var container = document.getElementById('character_container');
   var step = 0;
-  var cankill = false;
+  var canKill = false;
 
   init();
 
@@ -35,12 +35,20 @@ window.addEventListener('load', (function(){
   function createTheChosenOne(){
     log('-> Choose The Chosen One');
     var roll = Math.floor((Math.random() * characters.length) + 1);
-    log(['The Chosen One is character ' + roll, characters[roll]]);
+    log(['The Chosen One is character ' + roll, characters[roll-1]]);
   }
 
   function launchStep(){
     log('-> Launch Step');
     log('Etape : ' + step);
+    launchClue();
+  }
+
+  function launchClue(){
+    log('-> Launch Clue');
+    
+
+    }
   }
 
   function handlerController(){
