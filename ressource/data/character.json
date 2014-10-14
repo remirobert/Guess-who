@@ -1,6 +1,7 @@
 {
     "characters": [
 	{
+	    "id":0,
 	    "sexe": 0,
 	    "attribut": [{
 		"hair": "red",
@@ -12,6 +13,7 @@
 	    }]
 	},
 	{
+	    "id":1,
 	    "sexe": 1,
 	    "attribut": [{
 		"hair": null,
@@ -23,6 +25,7 @@
 	    }]
 	},
 	{
+	    "id":2,
 	    "sexe": 0,
 	    "attribut": [{
 		"hair": null,
