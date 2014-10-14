@@ -49,6 +49,7 @@ function generateListClue(selectedCharacter) {
 	    prefix += " hasn't";
 	    currentAttribut = currentClue.attribut;
 	}
+	
 	currentClue.prefix = prefix;
 	currentClue.attribut = currentAttribut;
 	listClue[index] = currentClue;
