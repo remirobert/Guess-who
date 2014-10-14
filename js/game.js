@@ -39,11 +39,11 @@ window.addEventListener('load', (function(){
           c.src = 'ressource/img/characters/' + (characters[i].id + 1) + '.png';
     	    container.appendChild(c);
 
-          var h = document.createElement('img');
-          h.setAttribute("id", i);
-          h.setAttribute("class", "hands");
-          h.src = 'ressource/img/characters/' + (characters[i].id + 1) + '-main' + '.png';
-          hand_container.appendChild(h);
+          // var h = document.createElement('img');
+          // h.setAttribute("id", i);
+          // h.setAttribute("class", "hands");
+          // h.src = 'ressource/img/characters/' + (characters[i].id + 1) + '-main' + '.png';
+          // hand_container.appendChild(h);
 
     	}
     	dom_characters = document.getElementsByClassName("character");
