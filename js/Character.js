@@ -5,29 +5,13 @@ function Character() {
     this.eye;
 }
 
-
 function initCharacter() {
-    loadJSON("ressource/data/character.json",
-             function(data) { 
-		 console.log('data json get ' + data); 
-		 dataJsonFile = data;
-	     },
-             function(xhr) { console.error(xhr); 
-			     return;
-			   }
-	    );
-
-/*    
-    var randCharacter = Math.floor((Math.random() * 3));
-    console.log(randCharacter);
-
-    var parse = JSON.parse(dataJsonFile).characters[randCharacter];
-*/
+    var dataJson = loadJSON2("ressource/data/character.json");
+    var parse = dataJson.characters[Math.floor((Math.random() * 3))];
+    
     var selectedCharacter = new Character();
-/*
     selectedCharacter.hair = parse.hair;
     selectedCharacter.hat = parse.hat;
-    selectedCharacter.eye = parse.eye;*/
+    selectedCharacter.eye = parse.eye;
     return selectedCharacter;
-
 }
