@@ -179,10 +179,6 @@ function init_game(){
     	log('-> Action Character');
     	checkLimit();
 
-	if (indexKill == 11) {
-	    return ;
-	}
-
 	if (isError == false && characters[e.target.id].id == the_chosen_one.id) {
 	    isError = true;
 	    console.log("............................... error target GAME OVER");
