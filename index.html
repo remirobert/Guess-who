@@ -2,7 +2,8 @@
 <!--[if lt IE 7]>      <html class=" lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class=" lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class=" lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
+<!--[if gt IE 8]><!--> 
+<html> <!--<![endif]-->
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="Description" CONTENT="Guess-Who">
@@ -12,57 +13,26 @@
   <meta content="maximum-scale=1.0" name="viewport" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
 
+  <script type="text/javascript" src="js/utils.js"></script>
+  <script type="text/javascript" src="js/Character.js"></script>
+  <script type="text/javascript" src="js/clue.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/sound_controller.js"></script>
+  <script type="text/javascript" src="js/game.js"></script>
+
   <link rel="stylesheet" href="lib/normalize.min.css" />
   <!-- <link rel="stylesheet" href="css/style.min.css" /> -->
   <link rel="stylesheet" href="style/style.css" />
   <title>Learn English with Guess Who</title>
-
 </head>
 
-<body>
+  <body>
+    <img id="logo" src="ressource/img/general/logo.png"/>
+    <div id="wrapper"></div>
 
-<!-- ***************************************************************************
-                                  BODY
-***************************************************************************  -->
-  <header>
-
-  </header>
-
-  <nav>
-
-  </nav>
-
-
-  <div id="container_theme">
-    <a  class="theme1" href="level.html">  
-      <img src="ressource/img/universMenu/theme1.png"/> 
-    </a>
-
-    <a  class="theme1" href="">  
-      <img src="ressource/img/universMenu/theme2.png"/> 
-    </a>
-
-    <a  class="theme1" href="">  
-      <img src="ressource/img/universMenu/theme3.png"/> 
-    </a>
-
-    <a  class="theme1" href="">  
-      <img src="ressource/img/universMenu/theme4.png"/> 
-    </a>
-
-    <a  class="theme1" href="">  
-      <img src="ressource/img/universMenu/theme5.png"/> 
-    </a>
-
-    <a  class="theme1" href="">  
-      <img src="ressource/img/universMenu/theme6.png"/> 
-    </a>
-  </div>
-
-  <footer>
-
-  </footer>
-
-</body>
-
+      <!-- Controller audio -->
+    <audio id="sound_controller" src="ressource/sound/test.ogg" preload="auto">
+      Votre navigateur ne supporte pas l'élément <code>audio</code>.
+    </audio>
+  </body>
 </html>

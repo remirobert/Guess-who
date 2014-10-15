@@ -1,6 +1,6 @@
 log(['---------------','GAME', '---------------']);
 
-window.addEventListener('load', (function(){
+function init_game(){
     
     //Stuff
     var dom_characters, dom_hands, the_chosen_one, count_alives;
@@ -16,6 +16,7 @@ window.addEventListener('load', (function(){
     var memoryKilled = 0;
     var step_kills = [];
     var dom_content = document.getElementById('content');
+
     init();
     
     var listClueCharacter = generateListClue(the_chosen_one);
@@ -203,7 +204,7 @@ window.addEventListener('load', (function(){
     function endGame(){
 	log('-> endGame');
 	canKill = canClue = false;
-	document.location.href = "endGame.html"
+	document.location.href = "endGame.html";
 	// correctError();
     }
 
@@ -277,5 +278,4 @@ window.addEventListener('load', (function(){
     	return tab;
     }
 
-}));
-
+}

@@ -1,74 +1,53 @@
-body{
-  font-family:'Tahoma', 'Verdana', 'Helvetica';
-  color:#00858F;
-}
+
 
 #logo{
-  position:absolute;
+  position:relative;
   width:328px;
   height:51px;
   top:22px;
   left:220px;
 }
 
-  img.character{
-    margin-bottom:20px;
-  }
-
-  #clue{
-    color:red;
-    cursor:pointer;
-  }
-
-  .dead{
-    opacity:0.5;
-  }
-
-  #wrapper{
-    width:768px;
-    height:1024px;
-    border:1px solid red;
-    box-sizing:border-box;
-    background-image:url('../ressource/img/general/fond.png');
-  }
-
-  #character_container{
-    width: 652px;
-    margin:auto;
-    margin-top: 118px;
-  }
-
-  .hands{
-    cursor:pointer;
-    margin-bottom:20px;
-  }
-
-  #hands{
-    position: absolute;
-    width: 652px;
-    margin: auto;
-    left: 60px;
-    top:120px;
-  }
-
-
-/* Menu univers */
-.theme1 {
-    
+.hands{
+  cursor:pointer;
 }
 
-  #container_theme {
-    width:500px;
-    height:1024px; 
-    top: 118px;
-    left: 58px;
-  }
+img.character{
+  margin-bottom:20px;
+}
 
-  #mascotte{
-    position:absolute;
-    bottom:-20px;
-    left:500px;
-  }
+#clue{
+  color:red;
+  cursor:pointer;
+}
+
+.dead{
+  opacity:0.5;
+}
+
+#character_container{
+  width: 652px;
+  margin:auto;
+  margin-top: 100px;
+}
+
+#hands{
+  width: 652px;
+  margin: auto;
+  position: absolute;
+  top: 155px;
+  left: 60px;
+}
+
+.hands{
+  margin-bottom:20px;
+}
+
+#mascotte{
+  position:absolute;
+  bottom:-20px;
+  left:500px;
+}
 
 #pop{
   left:58px;
@@ -102,34 +81,28 @@ body{
   #home{
     background-position:0px 0px;
   }
-  #home:focus, #home:hover{
+  #home:hover{
     background-position:0px 5px;
   }
 
   #text_clue{
     background-position:-76px 0px;
   }
-  #text_clue:focus, #text_clue:hover{
+  #text_clue:hover{
     background-position:-76px 5px;
   }
 
   #replay{
     background-position:-152px 0px;
   }
-  #replay:focus, #replay:hover{
+  #replay:hover{
     background-position:-152px 5px;
   }
-
   #clue{
     background-position:-229px 0px;
-    display:none;
   }
-  #clue:focus, #clue:hover{
+  #clue:hover{
     background-position:-229px 5px;
-  }
-
-  .hidden{
-    display:none;
   }
 
 .animated { 
@@ -158,4 +131,74 @@ body{
 .bounce { 
     -webkit-animation-name: bounce; 
     animation-name: bounce; 
+
+}
+
+
+/*VIEWS*/
+body{
+  font-family:'Tahoma';
+  color:#00858F;
+  width:768px;
+  height:1024px;
+  background:url('../ressource/img/general/fond.png') no-repeat;
+}
+
+/* THEMES */
+div.title{
+  background-color:yellow;
+  font-size:32px;
+  width:492px;
+  margin:auto;
+  margin-top:50px;
+  padding:15px;
+  text-align:center;
+}
+
+#container_theme{
+  width:492px;
+  margin:auto;
+  margin-top:50px;
+}
+
+div.theme{
+  width:246px;
+  display:inline-block;
+}
+
+div.theme img{
+  cursor:pointer;
+}
+
+/* LEVEL */
+div#container_difficulties{
+  margin-top: 100px;
+}
+
+div.difficulty{
+  background:url('../ressource/img/general/sprite_level.png') no-repeat;
+  width: 511px;
+  height: 55px;
+  display:block;
+  margin: auto;
+  margin-top: 50px;
+  cursor:pointer;
+}
+
+#diff0{
+  background-position: 0px 0px;
+}
+
+#diff1{
+  background-position: 0px -55px;
+}
+
+#diff2{
+  background-position: 0 -110px;
+}
+
+/*JEU*/
+#conteneur_bottom{
+  position: relative;
+  margin-top: 225px;
 }
