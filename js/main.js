@@ -97,7 +97,7 @@ window.addEventListener('load', (function(){
     cont.id="conteneur_bottom";
       wrapper.appendChild(cont);
        var p = document.createElement("div");
-      p.id = "pop";
+      p.oid = "pop";
       p.style.opacity = 0.0;
        cont.appendChild(p);
           var i = document.createElement("img");
