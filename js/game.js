@@ -17,6 +17,13 @@ function init_game(){
     var step_kills = [];
     var dom_content = document.getElementById('content');
 
+    var error;
+    function ErrorClue() {
+	this.indexClue;
+	this.character;
+	this.currentWrongClue;
+    }
+
     init();
     
     var listClueCharacter = generateListClue(the_chosen_one);
@@ -34,28 +41,28 @@ function init_game(){
     }
 
     function handlers(){
-      document.getElementById('home').addEventListener('click', nav_home);
-      document.getElementById('text_clue').addEventListener('click', help_clue);
-      document.getElementById('replay').addEventListener('click', replay_sound);
-      document.getElementById('clue').addEventListener('click', launchClue);
+	document.getElementById('home').addEventListener('click', nav_home);
+	document.getElementById('text_clue').addEventListener('click', help_clue);
+	document.getElementById('replay').addEventListener('click', replay_sound);
+	document.getElementById('clue').addEventListener('click', launchClue);
     }
 
     function nav_home(){
-      console.log('nav_home');
+	console.log('nav_home');
     }
 
     function help_clue(){
-      console.log('help_clue');
-      printContent(listClueCharacter[clue_index-1].prefix + ' ' + listClueCharacter[clue_index-1].attribut);
+	console.log('help_clue');
+	printContent(listClueCharacter[clue_index-1].prefix + ' ' + listClueCharacter[clue_index-1].attribut);
     }
 
     function replay_sound(){
-      console.log('replay_sound');
-       playClue(listClueCharacter[clue_index-1]);
+	console.log('replay_sound');
+	playClue(listClueCharacter[clue_index-1]);
     }
 
     function printContent(c){
-      dom_content.textContent = c;
+	dom_content.textContent = c;
     }
 
     function createCharacters(){
@@ -67,15 +74,15 @@ function init_game(){
             c.src = 'ressource/img/characters/' + (characters[i].id + 1) + '.png';
     	    container.appendChild(c);
 
-          var h = document.createElement('img');
-          h.setAttribute("id", i);
-          h.setAttribute("class", "hands");
-          h.src = 'ressource/img/characters/' + 'hands_' + (characters[i].id + 1) + '.png';
-          hand_container.appendChild(h);
+            var h = document.createElement('img');
+            h.setAttribute("id", i);
+            h.setAttribute("class", "hands");
+            h.src = 'ressource/img/characters/' + 'hands_' + (characters[i].id + 1) + '.png';
+            hand_container.appendChild(h);
 
     	}
     	dom_characters = document.getElementsByClassName("character");
-      dom_hands = document.getElementsByClassName("hands");
+	dom_hands = document.getElementsByClassName("hands");
     	count_alives = characters.length;
     }
 
@@ -86,31 +93,45 @@ function init_game(){
 	return characters[roll-1];
     }
 
-  function launchStep(){
-    log('-> Launch Step');
-    log('Etape : ' + step);
+    function launchStep(){
+	log('-> Launch Step');
+	log('Etape : ' + step);
 
-    handlers();
-  }
+	handlers();
+    }
 
     function launchClue(){
     	cleanKills();
 
-    	if (clue_index > 0) {
-	    if (tryCluesCharacters(characters, listClueCharacter[clue_index]) == false) {
-		clue_index += 1;
-	    }
-	}
 
 	if (clue_index > listClueCharacter.length) {
 	    return;
 	}
 
+	console.log("INDEX KILL  = " + indexKill);
+
+	if (indexKill == 11) {
+	    for (index = 0; index < characters.length; index++) {
+		if (characters[index].isDead == false) {
+		    if (the_chosen_one.id == characters[index].id) {
+			runSoundSystem("you won");
+			console.log("WIN THE GAME");
+			endGame();
+		    }
+		    else {
+			runSoundSystem("you failed");
+			console.log("YOU ARE FAIL");
+			endGame();
+		    }
+		}
+	    }
+	}
+	
     	log('-> Launch Clue');
 
     	if(canClue){
-          document.getElementById('clue').style.display="inline-block";
-          dom_content.textContent = "";
+            document.getElementById('clue').style.display="inline-block";
+            dom_content.textContent = "";
     	    playClue(listClueCharacter[clue_index]);
     	    log(the_chosen_one);
     	    
@@ -136,11 +157,12 @@ function init_game(){
 	    return ;
 	}
 
-	console.log("number live : " + count_alives);
-	console.log("kill character call " + the_chosen_one.id);
-	if (e.target.id == the_chosen_one.id) {
+	if (characters[e.target.id].id == the_chosen_one.id) {
 	    console.log("............................... error target GAME OVER");
-	    endGame();
+	    error = new ErrorClue();
+	    error.character = the_chosen_one;
+	    error.currentWrongClue = listClueCharacter[clue_index]; 
+	    //endGame();
 	}
 
     	if(canKill){
@@ -177,7 +199,6 @@ function init_game(){
     function cleanKills(){
 	memoryKilled = 0;
 
-	correctError(null, null);
 	for(var i = 0; i<step_kills.length; i++){
 	    characters[step_kills[i]]['isDead'] = step;
 	}
@@ -192,70 +213,16 @@ function init_game(){
 	    if(characters[i]["isDead"]){
 		log(characters[i]);
 		dom_characters[i].style.opacity=0;
-		// var c = characters[i];
-		// var r = clue;
-		// correctError(c, r);     
 	    }
 	}
-
 	step_kills = [];
     }
 
     function endGame(){
 	log('-> endGame');
 	canKill = canClue = false;
-	document.location.href = "endGame.html";
-	// correctError();
-    }
 
-    function correctError(character, r) {
-	// log('-> correctError');
-	// console.log(r[clue_index].prefix);
-	// console.log(r[clue_index].attribut);
-
-	// var p = r[clue_index].prefix;
-	// var a = r[clue_index].attribut;
-
-	// if(p == 'She has' || p == 'He has'){
-	//   if(
-	//     (a == 'brown mustache' && character.mustache == "brown") ||
-	//     (a == 'blond mustache' && character.mustache == "blond") ||
-	//     (a == 'beard' && character.beard == "") ||
-	//     (a == 'blond hair' && character.hair == "blond") ||
-	//     (a == 'black hair' && character.hair == "black") ||
-	//     (a == 'brown hair' && character.hair == "brown") ||
-	//     (a == 'red hair' && character.hair == "red") ||
-	//     (a == 'green eye' && character.eye == "green") ||
-	//     (a == 'brown eye' && character.eye == "green") ||
-	//     (a == 'blue eye' && character.eye == "green") ||
-	//     (a == 'hat' && character.hat == "") ||
-	//     (a == 'green mask' && character.mask == "green") ||
-	//     (a == 'blue mask' && character.mask == "blue") ||
-	//     (a == 'red mask' && character.mask == "red") ||
-	//     (a == 'black mask' && character.mask == "black")
-	//     ){
-	//     console.log('JUSTE');
-	//   }else{
-	//     console.log('FAUX');
-	//   }
-	// }else{
-	//   if(
-	//     (a == 'mustache' && character.mustache == null) ||
-	//     (a == 'beard' && character.beard == null) ||
-	//     (a == 'hair' && character.hair == null) ||
-	//     (a == 'hat' && character.hat == null) ||
-	//     (a == 'mask' && character.mask == null)
-	//     ){
-	//     console.log('JUSTE');
-	//   }else{
-	//     console.log('FAUX');
-	//   }
-	// }
-
-	// if(clue_index == 0){
-
-	// }
-
+	document.location.href = "endGame.html"
     }
 
     function checkLimit(){
