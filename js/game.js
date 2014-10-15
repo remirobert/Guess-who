@@ -114,14 +114,14 @@ function init_game(){
 	    for (index = 0; index < characters.length; index++) {
 		if (characters[index].isDead == false) {
 		    if (the_chosen_one.id == characters[index].id) {
-			runSoundSystem("you won");
+			runSoundSystem("you win !");
 			console.log("WIN THE GAME");
-			endGame();
+			endGame(true);
 		    }
 		    else {
-			runSoundSystem("you failed");
-			console.log("YOU ARE FAIL");
-			endGame();
+			runSoundSystem("you loose !");
+			console.log("YOU LOOSE");
+			endGame(false);
 		    }
 		}
 	    }
@@ -218,11 +218,12 @@ function init_game(){
 	step_kills = [];
     }
 
-    function endGame(){
-	log('-> endGame');
-	canKill = canClue = false;
-
-	document.location.href = "endGame.html"
+    function endGame(win){
+    	log('-> endGame');
+    	canKill = canClue = false;
+        if(win){
+            view_endGame();
+        }
     }
 
     function checkLimit(){
@@ -243,6 +244,47 @@ function init_game(){
   	    }
     	}
     	return tab;
+    }
+
+    function view_endGame(){
+        removeView();
+        appendScreenEnd();
+        appendNav();
+    }
+
+    function appendScreenEnd(){
+        var cadre = document.createElement("div");
+        cadre.id = "cadre";
+        wrapper.appendChild(cadre);
+
+        var ct1 = document.createElement("p");
+        ct1.textContent = "Congratulations !";
+        cadre.appendChild(ct1);
+
+        var ct2 = document.createElement("p");
+        ct2.textContent = "You found me!";
+        cadre.appendChild(ct2);
+
+        var medal = document.createElement("div");
+        medal.id = "medal";
+        cadre.appendChild(medal);
+
+        var msc = document.createElement("img");
+        msc.src = "ressource/img/general/mascotte.gif";
+        msc.id = "mascotte";
+        wrapper.appendChild(msc);
+
+        var btn = document.createElement("div");
+        btn.setAttribute("class", "picto");
+        btn.id = "return_h";
+        wrapper.appendChild(btn);
+    }
+
+    function removeView(){
+        var myWrapper = document.getElementById("wrapper");
+        while (myWrapper.firstChild) {
+            myWrapper.removeChild(myWrapper.firstChild);
+        }
     }
 
 }

@@ -14,11 +14,11 @@ function playClue(currentClue) {
 
 function launchSounds(clue){
     var player = {
-	controller : document.getElementById("sound_controller"),
-	rep : 'ressource/sound/',
-	buffer : 0,
-	nb_sounds : clue.audio.length-1,
-	clue : clue
+    	controller : document.getElementById("sound_controller"),
+    	rep : 'ressource/sound/',
+    	buffer : 0,
+    	nb_sounds : clue.audio.length-1,
+    	clue : clue
     }
     playSound(player);
 }

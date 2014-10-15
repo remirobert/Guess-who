@@ -102,7 +102,7 @@ window.addEventListener('load', (function(){
           var i = document.createElement("img");
           i.src = "ressource/img/general/bulle.png";
           p.appendChild(i);
-          var co = document.createElement("img");
+          var co = document.createElement("div");
           co.id = "content";
           p.appendChild(co);
 
@@ -126,6 +126,8 @@ window.addEventListener('load', (function(){
     init_game();
 
   }
+
+  
 
 
 }));

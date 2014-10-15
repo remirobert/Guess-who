@@ -202,3 +202,50 @@ div.difficulty{
   position: relative;
   margin-top: 225px;
 }
+
+/*GAMEOVER*/
+#return_h{
+  display:block;
+  background:url('../ressource/img/general/sprite_picto.png') no-repeat;
+  width:76px;
+  height:81px;
+  cursor:pointer;
+  
+  background-position:-229px 0px;
+  position:relative;
+  margin:auto;
+  margin-top:85px;
+}
+
+#return_h:hover{
+  background-position:-229px 5px;
+}
+
+#cadre{
+  width:476px;
+  height:308px;
+  background-color:white;
+  opacity:0.6;
+  border-radius:12px;
+}
+
+#cadre{
+  text-align:center;
+  font-size:34px;
+  margin:auto;
+  margin-top:375px;
+  padding-top:46px;
+}
+
+#cadre p{
+  font-size:24px;
+  font-weight: bold;
+  line-height:0.5;
+}
+
+#cadre p:first-child{
+  font-size: 28px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
