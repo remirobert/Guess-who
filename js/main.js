@@ -34,11 +34,6 @@ window.addEventListener('load', (function(){
       t.id = i;
       c.appendChild(t);
 
-      var img = document.createElement("img");
-      img.src = "ressource/img/theme/theme" + i + ".png";
-      img.setAttribute("class", "lktheme");
-      img.id = i;
-      t.appendChild(img);
       t.addEventListener('click', chooseTheme);
     }
   }
@@ -97,7 +92,7 @@ window.addEventListener('load', (function(){
     cont.id="conteneur_bottom";
       wrapper.appendChild(cont);
        var p = document.createElement("div");
-      p.oid = "pop";
+      p.id = "pop";
       p.style.opacity = 0.0;
        cont.appendChild(p);
           var i = document.createElement("img");
@@ -118,7 +113,7 @@ window.addEventListener('load', (function(){
 
       picto_ids = ["home", "text_clue", "replay", "clue"];
       for (var i = 0; i<4; i++){
-        var picto = document.createElement("img");
+        var picto = document.createElement("div");
         picto.setAttribute("class", "picto");
         picto.id = picto_ids[i];
         ps.appendChild(picto);

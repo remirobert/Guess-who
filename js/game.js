@@ -63,8 +63,7 @@ function init_game(){
     }
 
     function replay_sound(){
-	runSoundSystem(listClueCharacter[clu])
-	playClue(listClueCharacter[clue_index-1]);
+	   playClue(listClueCharacter[clue_index-1]);
     }
 
     function printContent(c){
@@ -146,7 +145,7 @@ function init_game(){
 	
 
 	var popup = document.getElementById("pop")
-	popup.style.opacity = 0.0;
+	popup.style.opacity = 0;
 
 	if (clue_index > listClueCharacter.length) {
 	    return;
