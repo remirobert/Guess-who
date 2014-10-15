@@ -159,9 +159,6 @@ window.addEventListener('load', (function(){
 	count_alives = nb_lefts;
 	log('Alive : '+count_alives);
 
-	if(count_alives == 1){
-	    endGame();
-	}
 
 	for(var i = 0; i<characters.length; i++){
 	    if(characters[i]["isDead"]){
@@ -179,6 +176,7 @@ window.addEventListener('load', (function(){
     function endGame(){
 	log('-> endGame');
 	canKill = canClue = false;
+	document.location.href = "endGame.html"
 	// correctError();
     }
 

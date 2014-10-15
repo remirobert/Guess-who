@@ -82,7 +82,9 @@ function getCharacters() {
     var arrayIndex = randomParseArray();
 
     for (index = 0; index < nb_c; index++) {
-	characterList[index] = initCharacter(arrayIndex[index]);
+	var currentCharacterInitialised = initCharacter(arrayIndex[index]);
+	currentCharacterInitialised.id = arrayIndex[index];
+	characterList[index] = currentCharacterInitialised;
     }
     return characterList;
 }
