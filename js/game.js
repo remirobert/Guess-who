@@ -63,7 +63,11 @@ function init_game(){
     }
 
     function replay_sound(){
+	if (canSpeech == false) {
+	    return ;
+	}	
 	console.log('replay_sound');
+	runSoundSystem(listClueCharacter[clu])
 	playClue(listClueCharacter[clue_index-1]);
     }
 
@@ -135,6 +139,11 @@ function init_game(){
 	if (canSpeech == false) {
 	    return ;
 	}
+	
+	if (tryCluesCharacters(characters, listClueCharacter[clue_index]) == false) {
+	    clue_index += 1;
+	}
+	
 
 	var popup = document.getElementById("pop")
 	popup.style.opacity = 0.0;
