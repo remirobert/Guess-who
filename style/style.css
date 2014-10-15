@@ -11,49 +11,45 @@ body{
   left:220px;
 }
 
-.hands{
-  cursor:pointer;
-}
+  img.character{
+    margin-bottom:20px;
+  }
 
-img.character{
-  margin-bottom:20px;
-}
+  #clue{
+    color:red;
+    cursor:pointer;
+  }
 
-#clue{
-  color:red;
-  cursor:pointer;
-}
+  .dead{
+    opacity:0.5;
+  }
 
-.dead{
-  opacity:0.5;
-}
+  #wrapper{
+    width:768px;
+    height:1024px;
+    border:1px solid red;
+    box-sizing:border-box;
+    background-image:url('../ressource/img/general/fond.png');
+  }
 
-.first {
-  display:inline-block;
-}
+  #character_container{
+    width: 652px;
+    margin:auto;
+    margin-top: 118px;
+  }
 
-#wrapper{
-  width:768px;
-  height:1024px;
-  border:1px solid red;
-  box-sizing:border-box;
-  background-image:url('../ressource/img/general/fond.png');
-}
+  .hands{
+    cursor:pointer;
+    margin-bottom:20px;
+  }
 
-#character_container{
-  width: 652px;
-  margin:auto;
-  margin-top: 118px;
-}
-
-#hands{
-  width: 652px;
-  margin: auto;
-  position: absolute;
-<<<<<<< HEAD
-  top: 0px;
-  left: 66px;
-}
+  #hands{
+    position: absolute;
+    width: 652px;
+    margin: auto;
+    left: 60px;
+    top:120px;
+  }
 
 
 /* Menu univers */
@@ -61,25 +57,18 @@ img.character{
     
 }
 
-#container_theme {
-  width:500px;
-  height:1024px;
-  border:1px solid red;
-  border-box:;    
-=======
-  top: 118px;
-  left: 58px;
-}
+  #container_theme {
+    width:500px;
+    height:1024px; 
+    top: 118px;
+    left: 58px;
+  }
 
-.hands{
-  margin-bottom:20px;
-}
-
-#mascotte{
-  position:absolute;
-  bottom:-20px;
-  left:500px;
-}
+  #mascotte{
+    position:absolute;
+    bottom:-20px;
+    left:500px;
+  }
 
 #pop{
   left:58px;
@@ -169,5 +158,4 @@ img.character{
 .bounce { 
     -webkit-animation-name: bounce; 
     animation-name: bounce; 
->>>>>>> 96be7966ba42bafd7ca580acb8ba1fd1da3a4401
 }
