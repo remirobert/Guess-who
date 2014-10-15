@@ -16,6 +16,12 @@ window.addEventListener('load', (function(){
     var memoryKilled = 0;
     var step_kills = [];
     var dom_content = document.getElementById('content');
+    var Error = {
+	this.setp;
+	this.character;
+	this.currentWrongClue;
+    }
+    var error;
     init();
     
     var listClueCharacter = generateListClue(the_chosen_one);
@@ -149,6 +155,9 @@ window.addEventListener('load', (function(){
 
 	if (characters[e.target.id].id == the_chosen_one.id) {
 	    console.log("............................... error target GAME OVER");
+	    error = new Error();
+	    error.character = the_chosen_one;
+	    error.currentWrongClue = listClueCharacter[clue_index]; 
 	    //endGame();
 	}
 
