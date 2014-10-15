@@ -3,7 +3,7 @@ log(['---------------','GAME', '---------------']);
 window.addEventListener('load', (function(){
     
     //Stuff
-    var dom_characters, the_chosen_one, count_alives;
+    var dom_characters, dom_hands, the_chosen_one, count_alives;
     var characters = getCharacters();
     var container = document.getElementById('character_container');
     var hand_container = document.getElementById('hands');
@@ -14,6 +14,7 @@ window.addEventListener('load', (function(){
     var clue_index = 0;
     var memoryKilled = 0;
     var step_kills = [];
+    var dom_content = document.getElementById('content');
     init();
     
     var listClueCharacter = generateListClue(the_chosen_one);
@@ -26,8 +27,33 @@ window.addEventListener('load', (function(){
     	launchStep();
 
     	for(var i = 0 ; i < dom_characters.length; i++){
-    	    dom_characters[i].addEventListener("click", killCharacter);
+    	    dom_hands[i].addEventListener("click", killCharacter);
     	}
+    }
+
+    function handlers(){
+      document.getElementById('home').addEventListener('click', nav_home);
+      document.getElementById('text_clue').addEventListener('click', help_clue);
+      document.getElementById('replay').addEventListener('click', replay_sound);
+      document.getElementById('clue').addEventListener('click', launchClue);
+    }
+
+    function nav_home(){
+      console.log('nav_home');
+    }
+
+    function help_clue(){
+      console.log('help_clue');
+      printContent(listClueCharacter[clue_index-1].prefix + ' ' + listClueCharacter[clue_index-1].attribut);
+    }
+
+    function replay_sound(){
+      console.log('replay_sound');
+       playClue(listClueCharacter[clue_index-1]);
+    }
+
+    function printContent(c){
+      dom_content.textContent = c;
     }
 
     function createCharacters(){
@@ -39,14 +65,15 @@ window.addEventListener('load', (function(){
           c.src = 'ressource/img/characters/' + (characters[i].id + 1) + '.png';
     	    container.appendChild(c);
 
-          // var h = document.createElement('img');
-          // h.setAttribute("id", i);
-          // h.setAttribute("class", "hands");
-          // h.src = 'ressource/img/characters/' + (characters[i].id + 1) + '-main' + '.png';
-          // hand_container.appendChild(h);
+          var h = document.createElement('img');
+          h.setAttribute("id", i);
+          h.setAttribute("class", "hands");
+          h.src = 'ressource/img/characters/' + 'hands_' + (characters[i].id + 1) + '.png';
+          hand_container.appendChild(h);
 
     	}
     	dom_characters = document.getElementsByClassName("character");
+      dom_hands = document.getElementsByClassName("hands");
     	count_alives = characters.length;
     }
 
@@ -60,7 +87,8 @@ window.addEventListener('load', (function(){
   function launchStep(){
     log('-> Launch Step');
     log('Etape : ' + step);
-    document.getElementById('clue').addEventListener("click", launchClue);
+
+    handlers();
   }
 
     function launchClue(){
@@ -77,7 +105,10 @@ window.addEventListener('load', (function(){
 	}
 
     	log('-> Launch Clue');
+
     	if(canClue){
+          document.getElementById('clue').style.display="inline-block";
+          dom_content.textContent = "";
     	    playClue(listClueCharacter[clue_index]);
     	    log(the_chosen_one);
     	    
@@ -89,17 +120,14 @@ window.addEventListener('load', (function(){
     	    canKill = true;
     	    canClue = false;
 
-          printClue(listClueCharacter[clue_index].attribut);
+          
     	}else{
     	    log("CAN'T CLUE FOR NOW");
     	}
     }
 
-    function printClue(clue){
-
-    }
-
     function killCharacter(e){
+
     	log('-> Action Character');
     	checkLimit();
 
@@ -121,7 +149,7 @@ window.addEventListener('load', (function(){
     		    log('CAN NOT KILL : LIMIT');
     		}else{
     		    log('KILL '+e.target.id);
-    		    dom_characters[e.target.id].setAttribute('class', 'character dead');
+    		    dom_characters[e.target.id].setAttribute('class', 'character dead animated bounce');
     		    step_kills.push(e.target.id);
     		    canClue = true;
     		    memoryKilled += 1;
@@ -152,7 +180,7 @@ window.addEventListener('load', (function(){
     for(var i = 0; i<characters.length; i++){
       if(characters[i]["isDead"]){
           log(characters[i]);
-          dom_characters[i].style.display="none";
+          dom_characters[i].style.opacity=0;
           // var c = characters[i];
           // var r = clue;
           // correctError(c, r);     
