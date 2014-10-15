@@ -63,7 +63,7 @@ function init_game(){
     }
 
     function replay_sound(){
-	console.log('replay_sound');
+	runSoundSystem(listClueCharacter[clu])
 	playClue(listClueCharacter[clue_index-1]);
     }
 
@@ -139,6 +139,11 @@ function init_game(){
 	if (canSpeech == false) {
 	    return ;
 	}
+	
+	if (tryCluesCharacters(characters, listClueCharacter[clue_index]) == false) {
+	    clue_index += 1;
+	}
+	
 
 	var popup = document.getElementById("pop")
 	popup.style.opacity = 0.0;
@@ -153,12 +158,12 @@ function init_game(){
 	    for (index = 0; index < characters.length; index++) {
 		  if (characters[index].isDead == false) {
 		    if (the_chosen_one.id == characters[index].id) {
-			runSoundSystem("you win !");
+			runSoundSystem("you win congratulations !");
 			console.log("WIN THE GAME");
 			endGame(true, the_chosen_one);
 		    }
 		    else {
-			runSoundSystem("you loose !");
+			runSoundSystem("you loose try again !");
 			console.log("YOU LOOSE");
 			endGame(false);
 
