@@ -16,12 +16,12 @@ window.addEventListener('load', (function(){
     var memoryKilled = 0;
     var step_kills = [];
     var dom_content = document.getElementById('content');
-    var Error = {
-	this.setp;
+    var error;
+    function ErrorClue() {
+	this.indexClue;
 	this.character;
 	this.currentWrongClue;
     }
-    var error;
     init();
     
     var listClueCharacter = generateListClue(the_chosen_one);
@@ -112,10 +112,12 @@ window.addEventListener('load', (function(){
 	    for (index = 0; index < characters.length; index++) {
 		if (characters[index].isDead == false) {
 		    if (the_chosen_one.id == characters[index].id) {
+			runSoundSystem("you won");
 			console.log("WIN THE GAME");
 			endGame();
 		    }
 		    else {
+			runSoundSystem("you failed");
 			console.log("YOU ARE FAIL");
 			endGame();
 		    }
@@ -155,7 +157,7 @@ window.addEventListener('load', (function(){
 
 	if (characters[e.target.id].id == the_chosen_one.id) {
 	    console.log("............................... error target GAME OVER");
-	    error = new Error();
+	    error = new ErrorClue();
 	    error.character = the_chosen_one;
 	    error.currentWrongClue = listClueCharacter[clue_index]; 
 	    //endGame();
