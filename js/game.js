@@ -146,7 +146,8 @@ function init_game(){
 		    else {
 			runSoundSystem("you failed");
 			console.log("YOU ARE FAIL");
-			createCharactersFail();
+			//createCharactersFail();
+			endGame();
 		    }
 		}
 	    }
@@ -182,7 +183,6 @@ function init_game(){
 	    return ;
 	}
 
-	/*
 	if (isError == false && characters[e.target.id].id == the_chosen_one.id) {
 	    isError = true;
 	    console.log("............................... error target GAME OVER");
@@ -193,7 +193,6 @@ function init_game(){
 	    error.indexClue = clue_index;
 	    //endGame();
 	}
-	*/
     	if(canKill){
     	    if(step_kills.indexOf(e.target.id)>=0) {
     		log('REVIVE '+e.target.id);
@@ -201,6 +200,7 @@ function init_game(){
     		step_kills.splice(step_kills.indexOf(e.target.id),1);
     		memoryKilled -= 1;
     		log(memoryKilled);
+		indexKill -= 1;
     		if(memoryKilled <= 0){
     		    canClue = false;
     		}
