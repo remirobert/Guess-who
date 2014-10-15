@@ -5,7 +5,7 @@ function Clue() {
 
 function getRandomListClue(typeSexeCharacter) {
     var randomList = ["sexe"];
-    var clueList = ["hair", "eye", "hat", "mask", "beard", "mustache"];
+    var clueList = ["hair", "eyes", "hat", "mask", "beard", "mustache"];
 
     if (typeSexeCharacter == "She ") {
 	clueList.splice(4, 3);
@@ -28,10 +28,10 @@ function generateListClue(selectedCharacter) {
 
     currentClue.prefix = "";
     if (selectedCharacter.sexe == "She ") {
-	currentClue.attribut = "She's a girl.";
+	currentClue.attribut = "She is a girl.";
     }
     else {
-	currentClue.attribut = "He's a boy.";
+	currentClue.attribut = "He is a boy.";
     }
     listClue[0] = currentClue;
     for (index = 1; index < clues.length; index++) {
@@ -46,13 +46,25 @@ function generateListClue(selectedCharacter) {
 	    currentAttribut = attributValue + " " + currentClue.attribut;
 	}
 	else {
-	    prefix += " hasn't";
+	    prefix += " has not";
 	    currentAttribut = currentClue.attribut;
 	}
 	
 	currentClue.prefix = prefix;
-	currentClue.attribut = currentAttribut;
+	currentClue.attribut = "";
+	var tmpAttribut = currentAttribut;
+	var spliter = currentAttribut.split(" ")[currentAttribut.split(" ").length - 1];
+	if (spliter == "hat" || spliter == "mustache" ||
+	    spliter == "beard" || spliter == "mask") {
+	    currentClue.attribut += "a ";
+	    currentClue.attribut += tmpAttribut;
+	}
+	else {
+	    currentClue.attribut = tmpAttribut;
+	}
 	listClue[index] = currentClue;
     }
+    log(listClue);
     return listClue;
 }
+
