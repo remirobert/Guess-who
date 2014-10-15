@@ -8,6 +8,7 @@ window.addEventListener('load', (function(){
     var container = document.getElementById('character_container');
     var hand_container = document.getElementById('hands');
     var step = 0;
+    var indexKill = 0;
     var canKill = false;
     var canClue = true;
     var limitReach = false;
@@ -103,14 +104,19 @@ window.addEventListener('load', (function(){
     	log('-> Action Character');
     	checkLimit();
 
+	if (indexKill == 11) {
+	    return ;
+	}
+
+	console.log("number live : " + count_alives);
 	console.log("kill character call " + the_chosen_one.id);
 	if (e.target.id == the_chosen_one.id) {
-	    console.log("error target GAME OVER");
+	    console.log("............................... error target GAME OVER");
 	    endGame();
 	}
 
     	if(canKill){
-    	    if(step_kills.indexOf(e.target.id)>=0){
+    	    if(step_kills.indexOf(e.target.id)>=0) {
     		log('REVIVE '+e.target.id);
     		dom_characters[e.target.id].setAttribute('class', 'character');
     		step_kills.splice(step_kills.indexOf(e.target.id),1);
@@ -126,6 +132,7 @@ window.addEventListener('load', (function(){
     		if(limitReach==true){
     		    log('CAN NOT KILL : LIMIT');
     		}else{
+		    indexKill += 1;
     		    log('KILL '+e.target.id);
     		    dom_characters[e.target.id].setAttribute('class', 'character dead');
     		    step_kills.push(e.target.id);
