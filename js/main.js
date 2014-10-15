@@ -8,7 +8,7 @@ window.addEventListener('load', (function(){
   init();
 
   function init(){
-    view_theme();
+     view_theme();
   }
 
   function view_theme(){
@@ -33,12 +33,6 @@ window.addEventListener('load', (function(){
       t.setAttribute("class", "theme");
       t.id = i;
       c.appendChild(t);
-
-      var img = document.createElement("img");
-      img.src = "ressource/img/theme/theme" + i + ".png";
-      img.setAttribute("class", "lktheme");
-      img.id = i;
-      t.appendChild(img);
       t.addEventListener('click', chooseTheme);
     }
   }
@@ -117,7 +111,7 @@ window.addEventListener('load', (function(){
 
       picto_ids = ["home", "text_clue", "replay", "clue"];
       for (var i = 0; i<4; i++){
-        var picto = document.createElement("img");
+        var picto = document.createElement("div");
         picto.setAttribute("class", "picto");
         picto.id = picto_ids[i];
         ps.appendChild(picto);

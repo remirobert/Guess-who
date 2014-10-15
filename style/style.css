@@ -2,8 +2,8 @@
 
 #logo{
   position:relative;
-  width:328px;
-  height:51px;
+  width: 350px;
+  height: 76px;
   top:22px;
   left:220px;
 }
@@ -14,6 +14,7 @@
 
 img.character{
   margin-bottom:20px;
+  padding-top:14px;
 }
 
 #clue{
@@ -21,21 +22,17 @@ img.character{
   cursor:pointer;
 }
 
-.dead{
-  opacity:0.5;
-}
-
 #character_container{
   width: 652px;
-  margin:auto;
-  margin-top: 100px;
+  margin: auto;
+  margin-top: 75px;
 }
 
 #hands{
   width: 652px;
   margin: auto;
   position: absolute;
-  top: 155px;
+  top: 168px;
   left: 60px;
 }
 
@@ -70,7 +67,7 @@ img.character{
 
 .picto{
   display:block;
-  background:url('../ressource/img/general/sprite_picto.png') no-repeat;
+  background-image:url('../ressource/img/general/sprite_picto.png');
   width:76px;
   height:81px;
   display:inline-block;
@@ -82,57 +79,57 @@ img.character{
     background-position:0px 0px;
   }
   #home:hover{
-    background-position:0px 5px;
+    background-position: 0px -80px;
+    height: 77px;
   }
 
   #text_clue{
     background-position:-76px 0px;
   }
   #text_clue:hover{
-    background-position:-76px 5px;
+    background-position: -76px -80px;
+    height: 77px;
   }
 
   #replay{
     background-position:-152px 0px;
   }
   #replay:hover{
-    background-position:-152px 5px;
+    background-position: -152px -80px;
+    height: 77px;
   }
   #clue{
-    background-position:-229px 0px;
+    background-position:-228px 0px;
   }
   #clue:hover{
-    background-position:-229px 5px;
+    background-position: -228px -80px;
+    height: 77px;
   }
 
 .animated { 
-    -webkit-animation-duration: 1s; 
-    animation-duration: 1s; 
-    -webkit-animation-fill-mode: both; 
-    animation-fill-mode: both; 
-    -webkit-animation-timing-function: ease-in; 
-    animation-timing-function: ease-in; 
-} 
-
-@-webkit-keyframes bounce { 
-    0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
-    40% {-webkit-transform: translateY(30px);} 
-    60% {-webkit-transform: translateY(15px);} 
-    90% {-webkit-transform: translatYe(100px);}
-} 
-
-@keyframes bounce { 
-    0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
-    40% {transform: translateY(30px);} 
-    60% {transform: translateY(15px);} 
-    90% {transform: translateY(100px);}
-} 
-
-.bounce { 
-    -webkit-animation-name: bounce; 
-    animation-name: bounce; 
-
+  -webkit-transition: -webkit-transform 0.7s ease-in-out;
+  -moz-transition: -webkit-transform 0.7s ease-in-out
+  -ms-transition: -webkit-transform 0.7s ease-in-out;
+  -o-transition: -webkit-transform 0.7s ease-in-out;
+  transition: -webkit-transform 0.7s ease-in-out;
 }
+
+.bounce{
+  -webkit-transform: translateY(120px);
+}
+
+.reviving{ 
+  -webkit-transition: -webkit-transform 0.7s ease-in-out;
+  -moz-transition: -webkit-transform 0.7s ease-in-out
+  -ms-transition: -webkit-transform 0.7s ease-in-out;
+  -o-transition: -webkit-transform 0.7s ease-in-out;
+  transition: -webkit-transform 0.7s ease-in-out;
+}
+
+.bouncerevive{
+  -webkit-transform: translateY(0px);
+}
+
 
 
 /*VIEWS*/
@@ -145,6 +142,63 @@ body{
 }
 
 /* THEMES */
+.theme{
+  background:url('../ressource/img/theme/sprite_theme.png');
+  cursor:pointer;
+}
+.theme:nth-child(1){
+  width: 208px;
+  height: 233px;
+  background-position:0px 0px;
+}
+.theme:nth-child(1):hover{
+  background-position: 0px -256px;
+}
+.theme:nth-child(2){
+  width: 235px;
+  height: 233px;
+  margin-left: 48px;
+  background-position: -208px 0px;
+}
+.theme:nth-child(2):hover{
+  background-position: -208px -256px;
+}
+.theme:nth-child(3){
+  width: 207px;
+  height: 256px;
+  background-position: -444px -20px;
+}
+.theme:nth-child(3):hover{
+  background-position: -444px -271px;
+}
+.theme:nth-child(4){
+  width: 221px;
+  height: 233px;
+  margin-left: 48px;
+  background-position: -651px -50px;
+}
+.theme:nth-child(4):hover{
+  background-position: -651px -300px;
+}
+.theme:nth-child(5){
+  width: 206px;
+  height: 240px;
+  background-position: -873px -27px;
+}
+.theme:nth-child(5):hover{
+  background-position: -873px -276px;
+}
+.theme:nth-child(6){
+  margin-left: 48px;
+  width: 207px;
+  height: 250px;
+  background-position: -1079px -13px;
+}
+.theme:nth-child(6):hover{
+  background-position: -1079px -264px;
+}
+
+
 div.title{
   background-color:yellow;
   font-size:32px;
@@ -153,6 +207,7 @@ div.title{
   margin-top:50px;
   padding:15px;
   text-align:center;
+  border-radius: 6px;
 }
 
 #container_theme{
@@ -177,8 +232,8 @@ div#container_difficulties{
 
 div.difficulty{
   background:url('../ressource/img/general/sprite_level.png') no-repeat;
-  width: 511px;
-  height: 55px;
+  width: 509px;
+  height: 63px;
   display:block;
   margin: auto;
   margin-top: 50px;
@@ -188,13 +243,22 @@ div.difficulty{
 #diff0{
   background-position: 0px 0px;
 }
+#diff0:hover{
+  background-position: 0px -64px;
+}
 
 #diff1{
-  background-position: 0px -55px;
+  background-position: -511px 0px;
+}
+#diff1:hover{
+  background-position: -511px -64px;
 }
 
 #diff2{
-  background-position: 0 -110px;
+  background-position: -1022px 0px;
+}
+#diff2:hover{
+  background-position: -1022px -64px;
 }
 
 /*JEU*/
@@ -203,22 +267,32 @@ div.difficulty{
   margin-top: 225px;
 }
 
+div.charbox{
+  width:163px;
+  height:163px;
+  margin-bottom: 24px;
+  overflow:hidden;
+  display:inline-block;
+  vertical-align:top;
+}
+
 /*GAMEOVER*/
 #return_h{
-  display:block;
-  background:url('../ressource/img/general/sprite_picto.png') no-repeat;
-  width:76px;
-  height:81px;
-  cursor:pointer;
-  
-  background-position:-229px 0px;
-  position:relative;
-  margin:auto;
-  margin-top:85px;
+  display: block;
+  background: url('../ressource/img/general/sprite_picto.png') no-repeat;
+  width: 76px;
+  height: 80px;
+  cursor: pointer;
+  background-position: -229px 0px;
+  position: relative;
+  margin: auto;
+  margin-top: 85px;
 }
 
 #return_h:hover{
-  background-position:-229px 5px;
+  background-position: -229px -80px;
+  height: 82px;
+  margin-top: 90px;
 }
 
 #cadre{
@@ -230,11 +304,13 @@ div.difficulty{
 }
 
 #cadre{
+  position:relative;
   text-align:center;
   font-size:34px;
   margin:auto;
   margin-top:375px;
   padding-top:46px;
+  z-index:100;
 }
 
 #cadre p{
@@ -249,3 +325,12 @@ div.difficulty{
   font-weight: bold;
 }
 
+#medal{
+  position:relative;
+  background-image:url('../ressource/img/general/medal.png');
+  width:310px;
+  height:203px;
+  margin:auto;
+  margin-top:-185px;
+  z-index:200;
+}

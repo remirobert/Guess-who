@@ -43,7 +43,7 @@ function init_game(){
     }
 
     function handlers(){
-	document.getElementById('home').addEventListener('click', nav_home);
+	document.getElementById('home').addEventListener('click', return_home);
 	document.getElementById('text_clue').addEventListener('click', help_clue);
 	document.getElementById('replay').addEventListener('click', replay_sound);
 	document.getElementById('clue').addEventListener('click', launchClue);
@@ -70,11 +70,15 @@ function init_game(){
     function createCharacters(){
     	log('-> Creation of the Characters');
     	for (var i = 0 ; i < characters.length ; i++){
+            var charbox = document.createElement('div');
+            charbox.setAttribute('class', 'charbox');
+            container.appendChild(charbox);
+
     	    var c = document.createElement('img');
     	    c.setAttribute("id", i);
     	    c.setAttribute("class", "character");
             c.src = 'ressource/img/characters/' + (characters[i].id + 1) + '.png';
-    	    container.appendChild(c);
+    	    charbox.appendChild(c);
 
             var h = document.createElement('img');
             h.setAttribute("id", i);
@@ -84,7 +88,7 @@ function init_game(){
 
     	}
     	dom_characters = document.getElementsByClassName("character");
-	dom_hands = document.getElementsByClassName("hands");
+	    dom_hands = document.getElementsByClassName("hands");
     	count_alives = characters.length;
     }
 
@@ -141,7 +145,7 @@ function init_game(){
 		    if (the_chosen_one.id == characters[index].id) {
 			runSoundSystem("you win !");
 			console.log("WIN THE GAME");
-			endGame(true);
+			endGame(true, the_chosen_one);
 		    }
 		    else {
 			runSoundSystem("you loose !");
@@ -196,7 +200,7 @@ function init_game(){
     	if(canKill){
     	    if(step_kills.indexOf(e.target.id)>=0) {
     		log('REVIVE '+e.target.id);
-    		dom_characters[e.target.id].setAttribute('class', 'character');
+    		dom_characters[e.target.id].setAttribute('class', 'character reviving bouncerevive');
     		step_kills.splice(step_kills.indexOf(e.target.id),1);
     		memoryKilled -= 1;
     		log(memoryKilled);
@@ -250,9 +254,7 @@ function init_game(){
     function endGame(win){
     	log('-> endGame');
     	canKill = canClue = false;
-        if(win){
-            view_endGame();
-        }
+        view_endGame(win);
     }
 
     function checkLimit(){
@@ -275,13 +277,16 @@ function init_game(){
     	return tab;
     }
 
-    function view_endGame(){
+    function view_endGame(win){
         removeView();
-        appendScreenEnd();
-        appendNav();
+        if(win){
+            appendScreenWin();
+        }else{
+            appendScreenLoose(); 
+        }
     }
 
-    function appendScreenEnd(){
+    function appendScreenWin(){
         var cadre = document.createElement("div");
         cadre.id = "cadre";
         wrapper.appendChild(cadre);
@@ -296,17 +301,37 @@ function init_game(){
 
         var medal = document.createElement("div");
         medal.id = "medal";
-        cadre.appendChild(medal);
-
-        var msc = document.createElement("img");
-        msc.src = "ressource/img/general/mascotte.gif";
-        msc.id = "mascotte";
-        wrapper.appendChild(msc);
+        wrapper.appendChild(medal);
 
         var btn = document.createElement("div");
         btn.setAttribute("class", "picto");
+        btn.addEventListener('click', return_home);
         btn.id = "return_h";
         wrapper.appendChild(btn);
+    }
+
+    function appendScreenLoose(){
+        var cadre = document.createElement("div");
+        cadre.id = "cadre";
+        wrapper.appendChild(cadre);
+
+        var ct1 = document.createElement("p");
+        ct1.textContent = "Try again !";
+        cadre.appendChild(ct1);
+
+        var ct2 = document.createElement("p");
+        ct2.textContent = "Next time, I'm sure you will find me !";
+        cadre.appendChild(ct2);
+
+        var btn = document.createElement("div");
+        btn.setAttribute("class", "picto");
+        btn.addEventListener('click', return_home);
+        btn.id = "return_h";
+        wrapper.appendChild(btn);
+    }
+
+    function return_home(){
+        window.location.reload();
     }
 
     function removeView(){
