@@ -5,7 +5,7 @@ function Character() {
     this.sexe;
     this.hair;
     this.hat;
-    this.eye;
+    this.eyes;
     this.mask;
     this.beard;
     this.mustache;
@@ -48,7 +48,7 @@ function initCharacter(index) {
     selectedCharacter.sexe = parse.sexe;
     selectedCharacter.hair = parse.attribut[0]["hair"];
     selectedCharacter.hat = parse.attribut[0]["hat"];
-    selectedCharacter.eye = parse.attribut[0]["eye"];
+    selectedCharacter.eyes = parse.attribut[0]["eyes"];
     selectedCharacter.mask = parse.attribut[0]["mask"];
     selectedCharacter.beard = parse.attribut[0]["beard"];
     selectedCharacter.mustache = parse.attribut[0]["mustache"];

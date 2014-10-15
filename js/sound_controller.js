@@ -4,10 +4,16 @@ var clue = {
 }
 
 function runSoundSystem(string) {
-    var msgPrefix = new SpeechSynthesisUtterance(string);
-    msgPrefix.rate = 0.6;
+    canSpeech = false;
+    msgPrefix = new SpeechSynthesisUtterance(string);
+    msgPrefix.rate = 0.8;
     msgPrefix.lang = 'en-US';
     window.speechSynthesis.speak(msgPrefix);
+
+    msgPrefix.onend = function(event) {
+	canSpeech = true;
+	console.log('SONG OVER !!!!!!!');
+    };
 }
 
 function playClue(currentClue) {

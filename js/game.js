@@ -3,7 +3,7 @@ log(['---------------','GAME', '---------------']);
 function init_game(){
     
     //Stuff
-    var dom_characters, dom_hands, the_chosen_one, count_alives;
+    var dom_characters, dom_hands, the_chosen_one, count_alives, msgPrefix;
     var characters = getCharacters();
     var container = document.getElementById('character_container');
     var hand_container = document.getElementById('hands');
@@ -17,6 +17,7 @@ function init_game(){
     var step_kills = [];
     var dom_content = document.getElementById('content');
     var isError = false;
+    var canSpeech = true;
 
     var error;
     function ErrorClue() {
@@ -54,6 +55,9 @@ function init_game(){
     }
 
     function help_clue(){
+	var popup = document.getElementById("pop")
+	popup.style.opacity = 1.0;
+
 	console.log('help_clue');
 	printContent(listClueCharacter[clue_index-1].prefix + ' ' + listClueCharacter[clue_index-1].attribut);
     }
@@ -128,6 +132,12 @@ function init_game(){
     function launchClue(){
     	cleanKills();
 
+	if (canSpeech == false) {
+	    return ;
+	}
+
+	var popup = document.getElementById("pop")
+	popup.style.opacity = 0.0;
 
 	if (clue_index > listClueCharacter.length) {
 	    return;
