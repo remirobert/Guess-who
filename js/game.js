@@ -16,12 +16,14 @@ function init_game(){
     var memoryKilled = 0;
     var step_kills = [];
     var dom_content = document.getElementById('content');
+    var isError = false;
 
     var error;
     function ErrorClue() {
 	this.indexClue;
 	this.character;
 	this.currentWrongClue;
+	this.currrentCharacterStat;
     }
 
     init();
@@ -86,6 +88,29 @@ function init_game(){
     	count_alives = characters.length;
     }
 
+    function createCharactersFail(){
+    	log('-> Creation of the Characters on FAIL');
+    	for (var i = 0 ; i < error.currrentCharacterStat.length; i++) {
+	    if (error.currrentCharacterStat[i].isDead == false) {
+    		var c = document.createElement('img');
+    		c.setAttribute("id", i);
+    		c.setAttribute("class", "character");
+		c.src = 'ressource/img/characters/' + (error.currrentCharacterStat[i].id + 1) + '.png';
+    		container.appendChild(c);
+
+		var h = document.createElement('img');
+		h.setAttribute("id", i);
+		h.setAttribute("class", "hands");
+		h.src = 'ressource/img/characters/' + 'hands_' + (error.currrentCharacterStat[i].id + 1) + '.png';
+		hand_container.appendChild(h);
+	    }
+    	}
+    	dom_characters = document.getElementsByClassName("character");
+	dom_hands = document.getElementsByClassName("hands");
+    	count_alives = characters.length;
+	handlers();
+    }
+
     function createTheChosenOne(){
 	log('-> Choose The Chosen One');
 	var roll = Math.floor((Math.random() * characters.length) + 1);
@@ -121,7 +146,7 @@ function init_game(){
 		    else {
 			runSoundSystem("you failed");
 			console.log("YOU ARE FAIL");
-			endGame();
+			createCharactersFail();
 		    }
 		}
 	    }
@@ -157,14 +182,18 @@ function init_game(){
 	    return ;
 	}
 
-	if (characters[e.target.id].id == the_chosen_one.id) {
+	/*
+	if (isError == false && characters[e.target.id].id == the_chosen_one.id) {
+	    isError = true;
 	    console.log("............................... error target GAME OVER");
 	    error = new ErrorClue();
 	    error.character = the_chosen_one;
 	    error.currentWrongClue = listClueCharacter[clue_index]; 
+	    error.currrentCharacterStat = characters;
+	    error.indexClue = clue_index;
 	    //endGame();
 	}
-
+	*/
     	if(canKill){
     	    if(step_kills.indexOf(e.target.id)>=0) {
     		log('REVIVE '+e.target.id);

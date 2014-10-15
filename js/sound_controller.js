@@ -5,6 +5,8 @@ var clue = {
 
 function runSoundSystem(string) {
     var msgPrefix = new SpeechSynthesisUtterance(string);
+    msgPrefix.rate = 0.6;
+    msgPrefix.lang = 'en-US';
     window.speechSynthesis.speak(msgPrefix);
 }
 
