@@ -95,16 +95,28 @@ window.addEventListener('load', (function(){
     function launchClue(){
     	cleanKills();
 
-    	if (clue_index > 0) {
-	    if (tryCluesCharacters(characters, listClueCharacter[clue_index]) == false) {
-		clue_index += 1;
-	    }
-	}
 
 	if (clue_index > listClueCharacter.length) {
 	    return;
 	}
 
+	console.log("INDEX KILL  = " + indexKill);
+
+	if (indexKill == 11) {
+	    for (index = 0; index < characters.length; index++) {
+		if (characters[index].isDead == false) {
+		    if (the_chosen_one.id == characters[index].id) {
+			console.log("WIN THE GAME");
+			endGame();
+		    }
+		    else {
+			console.log("YOU ARE FAIL");
+			endGame();
+		    }
+		}
+	    }
+	}
+	
     	log('-> Launch Clue');
 
     	if(canClue){
@@ -135,11 +147,9 @@ window.addEventListener('load', (function(){
 	    return ;
 	}
 
-	console.log("number live : " + count_alives);
-	console.log("kill character call " + the_chosen_one.id);
-	if (e.target.id == the_chosen_one.id) {
+	if (characters[e.target.id].id == the_chosen_one.id) {
 	    console.log("............................... error target GAME OVER");
-	    endGame();
+	    //endGame();
 	}
 
     	if(canKill){
@@ -196,7 +206,6 @@ window.addEventListener('load', (function(){
 		// correctError(c, r);     
 	    }
 	}
-
 	step_kills = [];
     }
 

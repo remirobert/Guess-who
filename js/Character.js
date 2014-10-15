@@ -44,7 +44,7 @@ function initCharacter(index) {
 
     var selectedCharacter = new Character();
     selectedCharacter.isDead = false;
-    selectedCharacter.id = parse.id;
+    selectedCharacter.id = index;
     selectedCharacter.sexe = parse.sexe;
     selectedCharacter.hair = parse.attribut[0]["hair"];
     selectedCharacter.hat = parse.attribut[0]["hat"];
