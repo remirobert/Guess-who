@@ -276,9 +276,9 @@ function init_game(){
     function getKilledCharacters(){
     	var tab = [];
     	for(var i = 0; i<characters.length; i++){
-  	    if(characters[i]['isDead']){
-    		tab[i] = characters[i];
-  	    }
+      	    if(characters[i]['isDead']){
+        		tab[i] = characters[i];
+      	    }
     	}
     	return tab;
     }
@@ -293,6 +293,15 @@ function init_game(){
     }
 
     function appendScreenWin(){
+        var container_perso = document.createElement("div");
+        container_perso.id = "perso";
+        wrapper.appendChild(container_perso);
+        var perso = document.createElement("img");
+        id_chosen = the_chosen_one['id'];
+        perso.id = "perso-win";
+        perso.src="ressource/img/characters/persos/" + 'perso-'+id_chosen+'.png';
+        container_perso.appendChild(perso);
+
         var cadre = document.createElement("div");
         cadre.id = "cadre";
         wrapper.appendChild(cadre);
@@ -302,7 +311,7 @@ function init_game(){
         cadre.appendChild(ct1);
 
         var ct2 = document.createElement("p");
-        ct2.textContent = "You found me!";
+        ct2.textContent = "You win !";
         cadre.appendChild(ct2);
 
         var medal = document.createElement("div");
@@ -317,6 +326,15 @@ function init_game(){
     }
 
     function appendScreenLoose(){
+        var container_perso = document.createElement("div");
+        container_perso.id = "perso";
+        wrapper.appendChild(container_perso);
+        var perso = document.createElement("img");
+        id_chosen = the_chosen_one['id'];
+        perso.id = "perso-win";
+        perso.src="ressource/img/characters/persos/" + 'silhouette-'+id_chosen+'.png';
+        container_perso.appendChild(perso);
+
         var cadre = document.createElement("div");
         cadre.id = "cadre";
         wrapper.appendChild(cadre);

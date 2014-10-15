@@ -51,7 +51,7 @@ window.addEventListener('load', (function(){
   }
 
   function view_difficulty(){
-    appendTitle('Choose your level');
+    appendTitle('Choose your level !');
     appendDifficulties();
   }
 

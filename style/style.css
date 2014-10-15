@@ -299,18 +299,15 @@ div.charbox{
   width:476px;
   height:308px;
   background-color:white;
-  opacity:0.6;
+  opacity:0.8;
   border-radius:12px;
-}
-
-#cadre{
-  position:relative;
-  text-align:center;
-  font-size:34px;
-  margin:auto;
-  margin-top:375px;
-  padding-top:46px;
-  z-index:100;
+  position: relative;
+  text-align: center;
+  font-size: 34px;
+  margin: auto;
+  margin-top: -52px;
+  padding-top: 46px;
+  z-index: 20;
 }
 
 #cadre p{
@@ -329,8 +326,21 @@ div.charbox{
   position:relative;
   background-image:url('../ressource/img/general/medal.png');
   width:310px;
-  height:203px;
+  height: 222px;
   margin:auto;
   margin-top:-185px;
   z-index:200;
+}
+
+#perso{
+  position: relative;
+  width: 260px;
+  height: 340px;
+  margin: auto;
+  z-index: 30;
+  margin-top: 75px;
+}
+
+#perso-win{
+
 }
