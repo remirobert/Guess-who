@@ -5,23 +5,8 @@
   <img src="https://raw.githubusercontent.com/remirobert/Guess-who-/master/imagesPres/capture1.png" align="center"/>
 </p>
 
--------------
-Arborescence
--------------
-main.js
-sound_controller.js
-clue.js
-mascotte.js
-character.js (Class character)
 
-------------
-XML OR JSON
-------------
-clues.xml
-characters.xml
+Guess who ?, is a web application developed in 48 hours, during the hackathon, organized by stanton.
+<a href="http://blog.stantum.com/le-premier-hackathon-ecolenumerique/">hackathon link</a>. This application was developed by a team of 6 people of 3 differents school in Bordeaux (France).  (Epitech, ECV, ESTEIS).
 
-------------
-SOUND (help : https://developer.mozilla.org/fr/docs/Web/HTML/Element/audio)
-------------
 
-hackathon 2014
